@@ -1,0 +1,21 @@
+.container {
+    padding-top: var(--space-lg);
+}
+
+.inner {
+    margin-top: var(--space-sm);
+}
+
+.interest {
+    display: flex;
+    flex-wrap: wrap;
+    padding: var(--space-sm) 0;
+    justify-content: flex-start;
+    gap: var(--space-sm);
+}
+.title_flex{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-sm);
+}

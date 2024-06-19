@@ -1,0 +1,26 @@
+.footer{
+    background-color: var(--gray);
+    padding: var(--space-lg) 0;
+    margin-top: auto;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    /* grid-template-columns: 2fr 1fr; */
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-xs);
+}
+
+.sns{
+    /* grid-column: 2 / 3; */
+    width: fit-content;
+}
+
+.copyright{
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: var(--space-lg);
+}

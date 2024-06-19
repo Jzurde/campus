@@ -1,0 +1,16 @@
+.container{
+    padding: var(--space-lg) 0 var(--space-md) 0;
+}
+.tags{
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+}
+.dates{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+}

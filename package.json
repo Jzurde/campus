@@ -1,0 +1,33 @@
+{
+  "name": "natural_blank",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/free-regular-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@next/bundle-analyzer": "^14.1.0",
+    "@next/third-parties": "^14.1.0",
+    "@svgr/webpack": "^8.1.0",
+    "cheerio": "^1.0.0-rc.12",
+    "date-fns": "^3.2.0",
+    "highlight.js": "^11.9.0",
+    "html-react-parser": "^5.1.1",
+    "microcms-js-sdk": "^2.7.0",
+    "next": "^14.2.4",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^6.9.9",
+    "plaiceholder": "^3.0.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "sharp": "^0.33.2"
+  }
+}
