@@ -17,7 +17,7 @@ export default function Terms() {
             <TwoColumn>
                 <TwoColumnMain>
                     <PostBody>
-                        <p>じゅーるでのポートフォリオサイト(以下: 本サイトとします)をご覧いただきありがとうございます。以下は皆様にご承知いただきたい事項です。本サイトをご利用の際はあらかじめご同意いただきますようお願いいたします。</p>
+                        <p>Campus - 使いやすいブログサイトのテンプレート(以下: 本サイトとします)をご覧いただきありがとうございます。以下は皆様にご承知いただきたい事項です。本サイトをご利用の際はあらかじめご同意いただきますようお願いいたします。</p>
 
 
                         <h2>プライバシーに関する声明</h2>
@@ -68,7 +68,7 @@ export default function Terms() {
                         </ul>
                         <h2>規約に関する相談窓口</h2>
                         <p>プライバシーに関する声明についてのご相談や、その他ご利用規約に関するお問い合わせは、下記窓口までお問合せください。</p>
-                        <InfoBox><h4>じゅーるで代表アドレス</h4>contact@jzurde.jp</InfoBox>
+                        <InfoBox><h4>個人情報に関するお問合せ</h4>xxxx@xxx.xx</InfoBox>
                     </PostBody>
                 </TwoColumnMain>
                 <TwoColumnSidebar>

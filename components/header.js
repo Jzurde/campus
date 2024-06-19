@@ -10,7 +10,7 @@ export default function Header() {
             <Container>
                 <div className={styles.inner}>
                     <Link href="/">
-                        <Logo width={147} />
+                        <Logo width={180} />
                     </Link>
                     <h4>{siteMeta.siteTitle}</h4>
                     <p className={styles.subcaption}>{siteMeta.siteDesc}</p>

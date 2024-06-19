@@ -72,11 +72,11 @@ export default async function OGImageHandler(req) {
                             borderBottom: 'solid 2px #eeecec'
                         }}>
                             <div style={{
-                                width: '173px',
-                                height: '32px',
+                                width: `${siteData.siteLogoSVGData.width}px`,
+                                height: `${siteData.siteLogoSVGData.height}px`,
                                 backgroundImage: `url(${`data:image/svg+xml,${encodeURIComponent(siteData.siteLogoSVGData.pure)}`})`,
                                 backgroundRepeat: 'no-repeat',
-                                backgroundSize: siteData.siteLogoSVGData.size,
+                                backgroundSize: `${siteData.siteLogoSVGData.width}px ${siteData.siteLogoSVGData.height}px`,
                             }}></div>
                             <p style={{
                                 fontSize: 20
