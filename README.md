@@ -15,6 +15,7 @@
 - contact.js( - pages/api)
 - public内の画像
 - .env
+- next.config.js
 
 それぞれについて説明します。
 
@@ -38,6 +39,9 @@ public内の画像は、ページのロゴやプロフィールロゴ、SNSカ�
 - MAIL_PASSWORD: 上述のメールアドレスのパスワードになります。メールアドレスと合わせて、メールサーバーの提供元から取得してください。
 - NOTIFY_EMAIL: お問合せがあった時に、お問い合わせ内容を転送する先のメールアドレスです。普段使っているものやスマートフォンのメールアドレスなどをしてすればよいでしょう。
 - APP_URL: ウェブサイトがホストされるURLをhttps:// から最後まで書いてください。
+
+### next.config.js
+nextConfig.images.domainsにホストURLに変更する必要があります。例えばウェブサイトのURLがhttps://www.jzurde.jp になる場合は、xxx.xxをwww.jzurde.jpに変更します。
 
 ## microCMS
 この、ブログサイトではコンテンツマネジメントに[microCMS](https://microcms.io/)を用いることを想定しています。
