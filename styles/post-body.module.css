@@ -1,0 +1,137 @@
+.stack>*+* {
+    margin-top: var(--stack-space, 1.5em);
+}
+
+.stack h2,
+.stack h3,
+.stack h4 {
+    --stack-space: 2em;
+}
+
+.stack h2+*,
+.stack h3+*,
+.stack h4+*,
+.stack img+* {
+    --stack-space: 0.8em;
+}
+
+.stack p {
+    line-height: 1.8;
+}
+
+.stack ul {
+    padding: revert;
+    list-style: revert;
+}
+
+.stack {
+    margin-bottom: var(--space-lg);
+}
+
+.stack a {
+    color: var(--accent);
+    margin: 2px;
+}
+
+/* .stack div {
+    background-color: var(--preaccent);
+    padding: var(--space-md);
+    width: fit-content;
+} */
+
+.stack figcaption {
+    font-size: var(--caption);
+    color: var(--lightblack);
+}
+
+
+.stack blockquote {
+    margin: 0;
+    border-left: 5px solid var(--gray);
+    padding: var(--space-sm) 0 var(--space-sm) var(--space-sm);
+}
+
+.stack div[data-filename] {
+    position: relative;
+}
+
+.stack div[data-filename]>span {
+    color: var(--darkgray);
+    position: absolute;
+    font-size: var(--caption);
+    top: var(--space-xs);
+    left: 88px;
+}
+
+.stack div[data-filename]>span::before {
+    content: '・';
+    margin-right: 8px;
+}
+
+/* .stack div[data-filename] > span{
+    display: inline-block;
+    background-color: var(--lightblack);
+    color: var(--white);
+    padding: var(--space-xs);
+    border-radius: var(--space-xs) var(--space-xs) 0 0;
+    font-size: var(--caption);
+}
+
+.stack div[data-filename] > pre{
+    margin-top: 0;
+}
+
+.stack div[data-filename] > pre > code{
+    border-radius: 0 var(--space-sm) var(--space-sm) var(--space-sm);
+    font-family: inherit;
+    line-height: 1.4rem;
+}
+
+.stack > pre > code{
+    border-radius: var(--space-sm);
+} */
+
+.stack img {
+    border: solid 1px var(--black);
+    border-radius: var(--space-sm);
+}
+
+.stack table {
+    display: table;
+    width: 100%;
+    border: solid 1px var(--black);
+    border-radius: var(--space-sm);
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+.stack table>tbody,
+.stack table>thead {
+    width: 100%;
+}
+
+.stack th {
+    padding: 10px;
+    border-bottom: solid 1px var(--black);
+    border-left: solid 1px var(--black);
+    background-color: var(--gray);
+    text-align: left;
+}
+
+.stack td {
+    padding: 10px;
+    border-bottom: solid 1px var(--black);
+    border-left: solid 1px var(--black);
+}
+
+.stack tbody > tr > th:first-of-type{
+    border-left: none;
+}
+
+.stack table > tbody > tr > td:first-of-type {
+    border-left: none;
+}
+
+.stack table > tbody > tr:last-of-type > td{
+    border-bottom: none;
+}

@@ -1,0 +1,32 @@
+.container{
+    background-color: var(--preaccent);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-xs) 0;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+}
+
+.container button{
+    background-color: transparent;
+    border: none;
+    display: inline-flex;
+    gap: var(--space-xs);
+    align-items: center;
+    font-family: inherit;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    border-radius: var(--space-xs);
+    padding: var(--space-xs);
+}
+.container button:hover{
+    background-color: var(--accent);
+    color: var(--white);
+}
