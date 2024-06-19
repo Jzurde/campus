@@ -14,7 +14,7 @@ const nextConfig = {
   },
   images: {
     disableStaticImages: true, // importした画像の型定義設定を無効にする
-    domains: ['images.microcms-assets.io', 'jzurde.jp', 'localhost', 'www.jzurde.jp'],
+    domains: ['images.microcms-assets.io', 'localhost', 'xxx.xx'],
   },
 }
 
