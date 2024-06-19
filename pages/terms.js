@@ -6,7 +6,6 @@ import PostBody from "@/components/post-body";
 import SidebarContainer from "@/components/sidebar-container";
 import Profile from "@/components/profile";
 import SNS from "@/components/sns";
-import LinkButton from "@/components/link";
 import { InfoBox } from "@/components/code";
 import PureLink from "@/components/pure-link";
 
