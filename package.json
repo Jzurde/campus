@@ -1,6 +1,6 @@
 {
-  "name": "natural_blank",
-  "version": "0.1.0",
+  "name": "campus",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
