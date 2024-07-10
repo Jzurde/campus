@@ -12,7 +12,6 @@ import TileContainer from "@/components/tile_container"
 import { LargeTile } from "@/components/tile"
 import SidebarContainer from "@/components/sidebar-container"
 import Meta from "@/components/meta"
-import Head from "next/head";
 import PreviewBanner from "@/components/preview_banner"
 import { returnSyntaxHighlight } from "@/lib/setSyntaxHighlight"
 import "highlight.js/styles/atom-one-dark-reasonable.css";
