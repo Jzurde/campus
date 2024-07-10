@@ -43,9 +43,6 @@ export default function Post({
         <>
             {(isInPreviewMode) && <PreviewBanner />}
             <Container>
-                <Head>
-                    <script src="https://kit.fontawesome.com/49c349b1fc.js" crossorigin="anonymous"></script>
-                </Head>
                 <Meta
                     pageTitle={title}
                     pageDesc={`${siteData.profile.name}の${title}に関する発言`}

@@ -7,7 +7,6 @@ import SidebarContainer from "@/components/sidebar-container";
 import Profile from "@/components/profile";
 import SNS from "@/components/sns";
 import { InfoBox } from "@/components/code";
-import PureLink from "@/components/pure-link";
 
 export default function Terms() {
     return (
