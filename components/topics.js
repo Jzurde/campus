@@ -10,9 +10,28 @@ export default function Topics({ posts, categories }) {
             <div className={styles.inner}>
                 <h3>最近の興味</h3>
                 <div className={styles.interest}>
-                    {categories.map(({name, slug})=>(
-                        <LinkButton title={name} type="2" link={'/posts/category/'+slug} />
+                    {categories.map(({ name, slug }) => (
+                        <LinkButton title={name} type="2" link={'/posts/category/' + slug} />
                     ))}
+                </div>
+
+                <div className={styles.scroll_infinity}>
+                    <div className={styles.scroll_infinity_wrap}>
+                        <div className={styles.scroll_infinity_list}>
+                            {categories.map(({ name, slug }) => (
+                                <div className={styles.scroll_infinity_item}>
+                                    <LinkButton title={name} type="2" link={'/posts/category/' + slug} />
+                                </div>
+                            ))}
+                        </div>
+                        <div className={styles.scroll_infinity_list}>
+                            {categories.map(({ name, slug }) => (
+                                <div className={styles.scroll_infinity_item}>
+                                    <LinkButton title={name} type="2" link={'/posts/category/' + slug} />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className={styles.inner}>
