@@ -1,6 +1,6 @@
 import styles from '@/styles/sns.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXTwitter, faGithub, faBluesky } from '@fortawesome/free-brands-svg-icons'
+import { faXTwitter, faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { siteData } from '@/lib/constant'
 
 export default function SNS({isAlignRight = false}) {
@@ -14,9 +14,9 @@ export default function SNS({isAlignRight = false}) {
                     </a>
                 </li>
                 <li>
-                    <a href={siteData.snsLinks.bluesky} target='_blank'>
-                        <FontAwesomeIcon icon={faBluesky} />
-                        <span className='sr-only'>Bluesky</span>
+                    <a href={siteData.snsLinks.instagram} target='_blank'>
+                        <FontAwesomeIcon icon={faInstagram} />
+                        <span className='sr-only'>Instagram</span>
                     </a>
                 </li>
                 <li>

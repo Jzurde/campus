@@ -4,3 +4,7 @@
     gap: var(--space-sm);
     align-items: flex-start;
 }
+.profile_name{
+    color: var(--accent);
+    font-size: 36px;
+}
