@@ -1,8 +1,10 @@
 import Head from "next/head";
-import { eyecatchLocal, siteMeta } from "@/lib/constant";
+import { eyecatchLocal} from "@/lib/constant";
+import { _siteData, _siteSettings } from "./_constant";
 import { useRouter } from "next/router";
 
-const { siteTitle, siteDesc, siteUrl, siteLocale, siteType, siteIcon } = siteMeta
+const { siteTitle, siteDesc } = _siteData;
+const { siteUrl, siteLocale, siteType, siteIcon } = _siteSettings;
 
 export default function Meta({ pageTitle, pageDesc, pageImg, pageImgW, pageImgH }) {
 

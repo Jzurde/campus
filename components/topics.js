@@ -1,6 +1,5 @@
 import styles from '@/styles/topics.module.css'
 import LinkButton from './link'
-import TileContainer from './tile_container'
 import PostList from './post_list'
 
 export default function Topics({ posts, categories }) {

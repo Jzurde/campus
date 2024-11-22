@@ -3,7 +3,7 @@ import Profile from './profile'
 import SNS from './sns'
 import Container from './container'
 import LinkButton from './link'
-import { siteData } from '@/lib/constant'
+import { _siteData } from './_constant'
 
 export default function Footer() {
     return (
@@ -18,7 +18,7 @@ export default function Footer() {
                     </div>
                 </div>
                 <LinkButton title="サイトポリシー" link='/terms/'/>
-                <small className={styles.copyright}>&copy;{siteData.copyright}</small>
+                <small className={styles.copyright}>&copy;{_siteData.copyright}</small>
             </Container>
         </footer>
     )
