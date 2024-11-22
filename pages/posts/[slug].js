@@ -15,7 +15,7 @@ import Meta from "@/components/meta"
 import PreviewBanner from "@/components/preview_banner"
 import { returnSyntaxHighlight } from "@/lib/setSyntaxHighlight"
 import "highlight.js/styles/atom-one-dark-reasonable.css";
-import { siteData } from "@/lib/constant"
+import { _myProfile } from "@/components/_constant"
 
 export default function Post({
     title,
@@ -44,7 +44,7 @@ export default function Post({
             <Container>
                 <Meta
                     pageTitle={title}
-                    pageDesc={`${siteData.profile.name}の${title}に関する発言`}
+                    pageDesc={`${_myProfile.name}の${title}に関する発言`}
                     pageImg={ogImage.url}
                     pageImgW={ogImage.width}
                     pageImgH={ogImage.height}
