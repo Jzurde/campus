@@ -1,11 +1,9 @@
 import styles from '@/styles/header.module.css'
 import Container from './container'
 import Link from 'next/link'
-import { siteMeta } from '@/lib/constant'
-import { Bungee } from 'next/font/google';
-import { _siteData } from './_constant';
+import { _siteData, logoFontInstance } from './_constant';
 
-const LogoFont = Bungee({ subsets: ['latin'], weight: '400' });
+const LogoFont = logoFontInstance;
 
 export default function Header() {
     const logoText = _siteData.siteLogo;

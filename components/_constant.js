@@ -1,5 +1,9 @@
 import { InfoBox } from "@/components/code";
 
+import { Bungee } from 'next/font/google';
+export const logoFontLink = 'https://fonts.googleapis.com/css2?family=Bungee&display=swap';
+export const logoFontInstance = Bungee({ subsets: ['latin'], weight: '400' })
+
 export const _siteData = {
     siteLogo: 'Campus',
     siteTitle: 'キャンパス',

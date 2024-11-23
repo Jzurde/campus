@@ -1,5 +1,4 @@
-import { _siteData } from "@/components/_constant";
-import { siteData } from "@/lib/constant";
+import { _siteData, logoFontLink } from "@/components/_constant";
 import { ImageResponse } from "next/og";
 
 export const config = {
@@ -25,8 +24,8 @@ const fetchFontNotoSansJP = async () => {
 };
 
 // Bungee フォントを取得
-const fetchFontBungee = async () => {
-    const googleFontsUrl = 'https://fonts.googleapis.com/css2?family=Bungee&display=swap';
+const fetchLogoFont = async () => {
+    const googleFontsUrl = logoFontLink;
     const css = await (
         await fetch(googleFontsUrl, {
             headers: {
@@ -46,11 +45,11 @@ export default async function OGImageHandler(req) {
     try {
         const { searchParams } = new URL(req.url);
         const notoSansJP = await fetchFontNotoSansJP();
-        const bungee = await fetchFontBungee();
+        const logoFont = await fetchLogoFont();
 
         const hasTitle = searchParams.has('title');
         const hasCategories = searchParams.has('categories');
-        const title = hasTitle ? searchParams.get('title').slice(0, 100) : siteData.shortDescription;
+        const title = hasTitle ? searchParams.get('title').slice(0, 100) : _siteData.shortDescription;
         const category = hasCategories ? searchParams.get('categories') : "";
 
         const categories = category.split(',');
@@ -84,7 +83,7 @@ export default async function OGImageHandler(req) {
                             borderBottom: 'solid 2px #eeecec',
                         }}>
                             <h1 style={{
-                                fontFamily: 'Bungee',
+                                fontFamily: 'LogoFont',
                                 fontSize: '35px',
                                 marginTop: 35,
                             }}>{_siteData.siteLogo}</h1>
@@ -152,8 +151,8 @@ export default async function OGImageHandler(req) {
                         style: "normal",
                     },
                     {
-                        name: 'Bungee',
-                        data: bungee,
+                        name: 'LogoFont',
+                        data: logoFont,
                         style: "normal",
                     }
                 ],
