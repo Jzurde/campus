@@ -49,7 +49,7 @@ export default async function OGImageHandler(req) {
 
         const hasTitle = searchParams.has('title');
         const hasCategories = searchParams.has('categories');
-        const title = hasTitle ? searchParams.get('title').slice(0, 100) : _siteData.shortDescription;
+        const title = hasTitle ? searchParams.get('title').slice(0, 100) : _siteData.siteDesc;
         const category = hasCategories ? searchParams.get('categories') : "";
 
         const categories = category.split(',');
