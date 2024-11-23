@@ -1,10 +1,9 @@
 import styles from '@/styles/sns.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXTwitter, faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons'
-import { siteData } from '@/lib/constant'
 import { _myProfile } from './_constant'
 
-export default function SNS({isAlignRight = false}) {
+export default function SNS({ isAlignRight = false }) {
     return (
         <div>
             <ul className={(isAlignRight) ? styles.right : styles.left}>
