@@ -1,3 +1,4 @@
+import { _myProfile } from "@/components/_constant";
 import Container from "@/components/container";
 import ListHeader from "@/components/list_header";
 import Meta from "@/components/meta";
@@ -7,7 +8,7 @@ import { getAllWorksSlug } from "@/lib/api";
 export default function AllWorks({ works }){
     return(
         <Container>
-            <Meta pageTitle="全ての作品" pageDesc={`これまでの${siteData.profile.name}のすべての作品の一覧`}/>
+            <Meta pageTitle="全ての作品" pageDesc={`これまでの${_myProfile.name}のすべての作品の一覧`}/>
             <ListHeader title="全ての作品"/>
             <WorkList works={works}/>
         </Container>
