@@ -66,7 +66,8 @@ export const _siteSettings = {
             name: "名前 太郎",
             email: "contact@xxxx.xx",
             message: "お問い合わせ内容は何を書けばいいのかをお問合せします"
-        }
+        },
+        disableContactForm: false,
     }
 
 }
