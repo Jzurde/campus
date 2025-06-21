@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-const { _siteSettings } = require('./components/_constant');
-
 const images_domain = ["images.microcms-assets.io"]
 const appUrl = new URL(process.env.APP_URL)
 images_domain.push(appUrl.hostname)
@@ -24,10 +22,21 @@ const nextConfig = {
     domains: images_domain,
   },
   async redirects() {
-    if (_siteSettings.contactForms.disableContactForm) {
+    if (
+      !process.env.MAIL_HOST ||
+      !process.env.MAIL_PORT ||
+      !process.env.MAIL_USER ||
+      !process.env.MAIL_PASSWORD ||
+      !process.env.NOTIFY_EMAIL
+    ) {
       return [
         {
           source: '/contact',
+          destination: '/404',
+          permanent: false,
+        },
+        {
+          source: '/api/contact',
           destination: '/404',
           permanent: false,
         },
@@ -39,3 +48,9 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+
+// MAIL_HOST = "secret_string"
+// MAIL_PORT = 465
+// MAIL_USER = "secret_email"
+// MAIL_PASSWORD = "secret_id"
+// NOTIFY_EMAIL = "secret_email"

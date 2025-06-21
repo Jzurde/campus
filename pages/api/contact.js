@@ -1,19 +1,19 @@
 import nodemailer from "nodemailer";
 
-export default async function sendMail(req, res){
+export default async function sendMail(req, res) {
     const transporter = nodemailer.createTransport({
-        host: process.env.MAIL_HOST,
-        port: process.env.MAIL_PORT, //465
+        host: (process.env.MAIL_HOST) ? process.env.MAIL_HOST : "",
+        port: (process.env.MAIL_PORT) ? process.env.MAIL_PORT : "",
         secure: true,
         auth: {
-            user: process.env.MAIL_USER,
-            pass: process.env.MAIL_PASSWORD,
+            user: (process.env.MAIL_USER) ? process.env.MAIL_USER : "",
+            pass: (process.env.MAIL_PASSWORD) ? process.env.MAIL_PASSWORD : "",
         }
     })
 
     const toHostMailData = {
-        from: `ブログサイト通知<${process.env.MAIL_USER}>`,
-        to: process.env.NOTIFY_EMAIL,
+        from: `ブログサイト通知<${(process.env.MAIL_USER) ? process.env.MAIL_USER : ""}>`,
+        to: (process.env.NOTIFY_EMAIL) ? process.env.NOTIFY_EMAIL : "",
         subject: `【ブログサイト】お問合せがありました`,
         text: `${req.body.message} send from ${req.body.name}`,
         html: `
@@ -28,7 +28,7 @@ export default async function sendMail(req, res){
     };
 
     const toCustomerMailData = {
-        from: `ブログサイト自動送信アカウント<${process.env.MAIL_USER}>`,
+        from: `ブログサイト自動送信アカウント<${(process.env.MAIL_USER) ? process.env.MAIL_USER : ""}>`,
         to: req.body.email,
         subject: `【ブログサイト】お問合せありがとうございます`,
         text: `この度はお問合せいただきましてありがとうございます。
