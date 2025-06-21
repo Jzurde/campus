@@ -1,3 +1,4 @@
+import { _siteSettings } from "@/components/_constant";
 import Container from "@/components/container";
 import LinkButton from "@/components/link";
 import ListHeader from "@/components/list_header";
@@ -109,24 +110,24 @@ export default function Contact() {
   };
   return (
     <Container>
-      <Meta pageTitle="お問合せ" pageDesc="お問合せフォーム"/>
+      <Meta pageTitle="お問合せ" pageDesc="お問合せフォーム" />
       <ListHeader title="お問合せ" subtitle="お問合せフォーム" />
       <p>お問い合わせは以下のフォームよりお願いいたします。<br />
         内容を確認後、折り返しご連絡させていただきます。</p>
       <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
         <div className={nameClassname}>
           <label htmlFor="name">お名前</label><span className={styles.warning}>名前を入力してください</span>
-          <input type="text" id="name" className={NotoSansJP.className} placeholder={siteData.contactForms.placeHolders.name} ref={nameRef} onInput={() => handleName()} />
+          <input type="text" id="name" className={NotoSansJP.className} placeholder={_siteSettings.contactForms.placeHolders.name} ref={nameRef} onInput={() => handleName()} />
         </div>
 
         <div className={emailClassname}>
           <label htmlFor="email">メールアドレス</label><span className={styles.warning}>メールアドレスを正しく入力してください</span>
-          <input type="email" id="email" className={SourceCodePro.className} placeholder={siteData.contactForms.placeHolders.email} ref={emailRef} onInput={() => handleEmail()} />
+          <input type="email" id="email" className={SourceCodePro.className} placeholder={_siteSettings.contactForms.placeHolders.email} ref={emailRef} onInput={() => handleEmail()} />
         </div>
 
         <div className={messageClassname}>
           <label htmlFor="content">お問合せ内容</label><span className={styles.warning}>お問合せ内容を入力してください</span>
-          <textarea id="content" className={NotoSansJP.className} placeholder={siteData.contactForms.placeHolders.message} ref={messageRef} onInput={() => handleMessage()}></textarea>
+          <textarea id="content" className={NotoSansJP.className} placeholder={_siteSettings.contactForms.placeHolders.message} ref={messageRef} onInput={() => handleMessage()}></textarea>
         </div>
 
         <div className={confirmClassname}>
