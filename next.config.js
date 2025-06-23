@@ -49,8 +49,3 @@ const nextConfig = {
 
 module.exports = nextConfig
 
-// MAIL_HOST = "secret_string"
-// MAIL_PORT = 465
-// MAIL_USER = "secret_email"
-// MAIL_PASSWORD = "secret_id"
-// NOTIFY_EMAIL = "secret_email"
