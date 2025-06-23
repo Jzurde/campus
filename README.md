@@ -1,70 +1,36 @@
-こんにちは。
-このブログテンプレートは、[じゅーるでのポートフォリオ](https://www.jzurde.jp)で使用されているブログテンプレートを配布用に再構成したものです。
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-# はじめに
-## 構成
-このブログサイトは以下の構成で動かすことを想定しています。
-- Next.js
-- microCMS
-- Vercel
+## Getting Started
 
-以上の構成と異なる使用する際は、適時必要なコード改変が必要になります。
+First, run the development server:
 
-## 始め方
-このテンプレートでは、以下の点を変更する必要があります。
-- constant.js( - lib内)
-- contact.js( - pages/api)
-- public内の画像
-- .env
-- next.config.js
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-それぞれについて説明します。
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### constant.js
-constant.jsは/lib内にあり、サイト上の固有文字列を管理しています。それぞれ初期値を参考に、ご自身のサイトに合わせて変更してください。
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### contact.js
-contact.jsはプロジェクト内に2つありますが、特にpages/apiの方は、改変が必要です。
-ご自身が使用されるメールサーバーやメール文面に合わせて変更してください。
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### public内の画像
-public内の画像は、ページのロゴやプロフィールロゴ、SNSカードなどに用いられる画像です。初期で入っているものと同じ名前のファイルで全てを揃えてください。
-なお、初期ファイルと画像の比率が異なる場合は、対応するconstant.jsのwidth, heightを合わせて変更する必要があります。
+## Learn More
 
-### .env
-環境変数を設定する必要があります。.env.exampleファイルでは、その記述例と必要な定義を示しています。
-全ての項目について適当な値を入力してください。以下でそれぞれの項目について説明を与えます。
-- API_KEY: microCMSのコンテンツAPIのAPIキーです。GET権限がある必要があります。
-- SERVICE_DOMAIN: microCMSのサービスドメインです。通常、ご利用のmicroCMSのダッシュボードのurlのxxx.microcms.io/...のxxx部分になります。
-- MAIL_USER: お問合せメールを転送する際に使用するメールアドレスになります。
-- MAIL_PASSWORD: 上述のメールアドレスのパスワードになります。メールアドレスと合わせて、メールサーバーの提供元から取得してください。
-- NOTIFY_EMAIL: お問合せがあった時に、お問い合わせ内容を転送する先のメールアドレスです。普段使っているものやスマートフォンのメールアドレスなどをしてすればよいでしょう。
-- APP_URL: ウェブサイトがホストされるURLをhttps:// から最後まで書いてください。
+To learn more about Next.js, take a look at the following resources:
 
-### next.config.js
-nextConfig.images.domainsにホストURLに変更する必要があります。例えばウェブサイトのURLがhttps://www.jzurde.jp になる場合は、xxx.xxをwww.jzurde.jpに変更します。
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## microCMS
-この、ブログサイトではコンテンツマネジメントに[microCMS](https://microcms.io/)を用いることを想定しています。
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-また、microCMSには以下の設定とAPIの作成を行ってください。
-コンテンツAPIを+マークから作成し、API名とエンドポイントを設定した後に、APIスキーマを定義のページで、ファイルインポートする場合はこちらを選択し、対応する設定ファイルをインポートしてください。
+## Deploy on Vercel
 
-### 発言のカテゴリ
-- API名: 発言のカテゴリ
-- エンドポイント: post_categories
-- APIスキーマ: post_categories-schema.jsonとして同梱
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-### 発言
-- API名: 発言
-- エンドポイント: posts
-- APIスキーマ: posts-schema.jsonとして同梱
-- 画面プレビュー遷移先URL: {ホストURL}/api/preview?contentId={CONTENT_ID}&draftKey={DRAFT_KEY}
-
-### ワークス
-- API名: ワークス
-- エンドポイント: works
-- APIスキーマ: works-schema.jsonとして同梱
-
-# 問合せ他
-配布テンプレート・コード・プログラム等に関する問い合わせ・バグの報告・使用方法に関するご質問やそのほかのご連絡は[お問合せフォーム](https://www.jzurde.jp/contact)からお願いいたします。
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

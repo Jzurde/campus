@@ -1,1 +1,0 @@
-{"apiFields":[{"idValue":"AlRA-VibIQ","fieldId":"name","name":"発言カテゴリー名","kind":"text","required":true},{"fieldId":"slug","name":"スラッグ","kind":"text","required":true},{"fieldId":"is_current","name":"最近の興味か","kind":"boolean","required":true}],"customFields":[]}

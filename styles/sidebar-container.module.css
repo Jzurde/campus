@@ -1,8 +1,0 @@
-.contact{
-    background-color: var(--gray);
-    padding: var(--space-ml) var(--space-sm) var(--space-sm);
-    border-radius: var(--space-sm);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-}

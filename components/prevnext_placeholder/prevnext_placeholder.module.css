@@ -1,0 +1,8 @@
+.placeholder {
+    border-radius: var(--space-sm);
+    background-color: var(--gray);
+    display: flex;
+    min-height: 128px;
+    justify-content: center;
+    align-items: center;
+}
