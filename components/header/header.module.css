@@ -1,0 +1,25 @@
+.header {
+    border-bottom: solid 1px var(--gray);
+}
+
+.logo_title {
+    font-size: 35px;
+}
+
+.logo_title.bungee {
+    font-family: 'Bungee', sans-serif;
+}
+
+.inner {
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--space-md);
+}
+
+@media (width<=544px) {
+    .subcaption {
+        display: none;
+    }
+}

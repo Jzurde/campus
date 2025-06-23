@@ -1,13 +1,24 @@
-import { siteData } from "@/lib/constant";
 import { ImageResponse } from "next/og";
 
 export const config = {
     runtime: "edge",
 }
 
+// export const revalidate = "force-cache";
+// export const runtime = "nodejs";
+
+// const font = fetch(
+//     new URL('../../assets/NotoSansJP-XXLight.ttf', import.meta.url)
+// ).then((res) => res.arrayBuffer());
+
 const font = fetchFont()
 
 export async function fetchFont(){
+    // NOTE: Noto Sans JP を使用する場合は以下の URL になる。（他のフォントを使用する場合は別のフォント名にする）
+    // text パラメータを付与することで、使用する文字のみをサブセット化を行い通信容量を削減しながら通信が可能となる。
+    // const googleFontsUrl = `https://fonts.googleapis.com/css2?family=Noto+Sans+JP&text=${encodeURIComponent(
+    //     text
+    // )}`;
 
     const googleFontsUrl = 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap';
 
@@ -36,7 +47,7 @@ export default async function OGImageHandler(req) {
 
         const hasTitle = searchParams.has('title')
         const hasCategories = searchParams.has('categories')
-        const title = hasTitle ? searchParams.get('title').slice(0, 100) : siteData.shortDescription
+        const title = hasTitle ? searchParams.get('title').slice(0, 100) : "じゅーるでのポートフォリオ"
         const category = hasCategories ? searchParams.get('categories') : ""
 
         const categories = category.split(',')

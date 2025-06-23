@@ -1,0 +1,26 @@
+.icon {
+    display: inline-block;
+    padding: 0 10px;
+    border-radius: 15px;
+    color: var(--accent);
+    border: solid 2px var(--accent);
+    margin-right: 2px;
+    font-size: 10px;
+    transition-duration: 0.3s;
+    position: relative;
+    top: -2px;
+}
+
+.text {
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+.link:hover>.text {
+    text-decoration: none;
+}
+
+.link:hover>.icon {
+    background-color: var(--accent);
+    color: var(--white);
+}

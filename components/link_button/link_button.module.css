@@ -1,0 +1,31 @@
+.button {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition-duration: 0.3s;
+}
+
+.button:hover {
+    background-color: var(--accent);
+    color: var(--white);
+}
+
+.button span {
+    margin-right: 12px;
+}
+
+.default,
+.icon {
+    composes: button;
+    background-color: var(--preaccent);
+    width: fit-content;
+}
+
+.icon span {
+    margin-left: 4px;
+}
+
+.gray {
+    background-color: var(--gray);
+    composes: button;
+}
