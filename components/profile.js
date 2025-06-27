@@ -1,17 +1,17 @@
 import LinkButton from './link'
-import styles from'@/styles/profile.module.css'
-import { siteData } from '@/lib/constant'
+import styles from '@/styles/profile.module.css'
 import parse from 'html-react-parser'
-import Image from 'next/image'
+import { _myProfile, logoFontInstance } from './_constant';
 
-export default function Profile(){
-    const profile_logo = siteData.profile.logo
-    return(
+const LogoFont = logoFontInstance;
+
+export default function Profile() {
+    return (
         <div className={styles.container}>
-            <Image src={profile_logo.url} width={profile_logo.width} height={profile_logo.height}/>
-            <h4>{siteData.profile.name}</h4>
-            <p>{parse(siteData.profile.description)}</p>
-            <LinkButton title="お問合せ" link='/contact'/>
+            <h2 className={`${styles.profile_name} ${LogoFont.className}`}>{_myProfile.english_name}</h2>
+            <h4>{_myProfile.name}</h4>
+            <p>{parse(_myProfile.description)}</p>
+            <LinkButton title="お問合せ" link='/contact' />
         </div>
     )
 }
