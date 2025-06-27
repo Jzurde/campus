@@ -34,7 +34,8 @@ async function parseIntoFormat(this_slug: any) {
             str_categories += value.name + ','
         })
         this_slug.eyecatch = {
-            url: `${process.env.APP_URL}/api/log?title=${this_slug.title}&categories=${str_categories.slice(0, -1)}`,
+            url: `/posts/${this_slug.slug}/opengraph-image`,
+            // url: `${process.env.APP_URL}/api/log?title=${this_slug.title}&categories=${str_categories.slice(0, -1)}`,
             width: 1200,
             height: 630,
         }

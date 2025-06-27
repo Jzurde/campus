@@ -19,14 +19,16 @@ import { Metadata } from "next"
 import { cookies, draftMode } from "next/headers"
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const post = await getPostBySlug((await params).slug)
+    const slug = (await params).slug
+    const post = await getPostBySlug(slug)
     const url = process.env.APP_URL;
     let str_categories = ""
     post.categories.map((value: any) => {
         str_categories += encodeURIComponent(value.name) + ','
     })
     const ogImage = {
-        url: `${url}/api/ogpcard?title=${encodeURIComponent(post.title)}\&categories=${str_categories.slice(0, -1)}`,
+        url: `/posts/${slug}/twitter-image`,
+        // url: `${url}/api/ogpcard?title=${encodeURIComponent(post.title)}\&categories=${str_categories.slice(0, -1)}`,
         width: 1200,
         height: 630,
     }
