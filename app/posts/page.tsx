@@ -19,7 +19,8 @@ export default async function Posts() {
                 str_categories += value.name + ','
             })
             post.eyecatch = {
-                url: `${process.env.APP_URL}/api/log?title=${post.title}&categories=${str_categories.slice(0, -1)}`,
+                url: `/posts/${post.slug}/opengraph-image`,
+                // url: `${process.env.APP_URL}/api/log?title=${post.title}&categories=${str_categories.slice(0, -1)}`,
                 width: 1200,
                 height: 630,
             }
