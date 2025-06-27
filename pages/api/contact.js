@@ -2,8 +2,8 @@ import nodemailer from "nodemailer";
 
 export default async function sendMail(req, res){
     const transporter = nodemailer.createTransport({
-        host: "sv85.star.ne.jp",
-        port: 465, //465
+        host: process.env.MAIL_HOST,
+        port: process.env.MAIL_PORT, //465
         secure: true,
         auth: {
             user: process.env.MAIL_USER,
@@ -44,7 +44,7 @@ export default async function sendMail(req, res){
     <p style="margin-top: 2px;">${req.body.name}様 (${req.body.email})</p>
     <h4 style="color: #444444; margin-bottom: 0;">お問合せ内容</h4>
     <p style="margin-top: 2px;">${req.body.message}</p>
-    <small>※1 - なお、本メールにお心あたりがございませんでしたら、破棄していただきますようお願いいたします。<br>
+    <small>※1 - 本メールにお心あたりがございませんでしたら、破棄していただきますようお願いいたします。<br>
     ※2 - このメールは送信専用です。ご返信いただくことはできませんのでご注意ください。</small>
         `
     }

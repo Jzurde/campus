@@ -5,11 +5,12 @@ import { getPlaiceholder } from "plaiceholder";
 import { getImageBuffer } from "@/lib/getImageBuffer";
 import ListHeader from "@/components/list_header";
 import Meta from "@/components/meta";
+import { _myProfile } from "@/components/_constant";
 
 export default function Posts({ posts }) {
     return (
         <Container>
-            <Meta pageTitle="全ての発言" pageDesc={`これまでの${siteData.profile.name}の発言の一覧`} />
+            <Meta pageTitle="全ての発言" pageDesc={`これまでの${_myProfile.name}の発言の一覧`} />
             <ListHeader title="全ての発言" />
             <PostList posts={posts} />
         </Container>
