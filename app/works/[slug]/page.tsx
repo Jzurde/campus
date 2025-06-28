@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const work = await getWorkBySlug(params.slug);
+    const work = await getWorkBySlug((await params).slug);
 
     return Meta({
         pageTitle: `${work.title}`,
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function WorksPage({ params }: { params: { slug: string } }) {
-    const work = await getWorkBySlug(params.slug);
+    const work = await getWorkBySlug((await params).slug);
 
     if (!work) {
         notFound();
