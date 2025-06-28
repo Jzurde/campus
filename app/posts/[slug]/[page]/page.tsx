@@ -71,10 +71,8 @@ export async function generateStaticParams() {
 export default async function Post({ params }: {
     params: { slug: string; page: string };
 }) {
-    console.log("PAGEPAGE!")
-    console.log(`page: ${await params.page}`)
     const { slug } = await params
-    const page = parseInt(await params.page, 10) || 1
+    const page = parseInt((await params).page, 10) || 1
 
 
     const { isEnabled: isInPreviewMode } = await draftMode()
