@@ -1,12 +1,14 @@
+import { getSiteSettings } from '@/lib/cms-api'
 import Container from '../container/container'
 import LinkButton from '../link_button/link_button'
 import Profile from '../profile/profile'
 import SNS from '../sns/sns'
 import styles from './footer.module.css'
 
-export default function Footer() {
+export default async function Footer() {
 
-    const copyright = "2025 Jzurde All right reserved.";
+    const siteSettings = await getSiteSettings("copyright")
+    const copyright = siteSettings.copyright;
 
     return (
         <footer className={styles.footer}>

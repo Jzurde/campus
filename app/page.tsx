@@ -5,10 +5,12 @@ import { getAllSlugs, getAllWorksSlug, getCategories } from "@/lib/cms-api";
 import Meta from "@/lib/meta";
 import { Metadata } from "next";
 
-export const metadata: Metadata = Meta({
-  pageTitle: "CAMPUS",
-  pageDescription: "人間の大学生のポートフォリオ"
-})
+export async function generateMetadata() {
+  return Meta({
+    pageTitle: "CAMPUS",
+    pageDescription: "人間の大学生のポートフォリオ"
+  })
+}
 
 export default async function Home() {
 

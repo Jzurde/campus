@@ -2,15 +2,17 @@ import styles from './profile.module.css'
 import parse from 'html-react-parser'
 import LinkButton from '../link_button/link_button';
 import { Bungee } from 'next/font/google';
+import { getSiteSettings } from '@/lib/cms-api';
 
 const logoFontInstance = Bungee({ subsets: ['latin'], weight: '400' });
 const LogoFont = logoFontInstance;
 
-export default function Profile() {
+export default async function Profile() {
 
-    const english_name = "YOUR NAME";
-    const name = "あなたの名前";
-    const description = "あなたのプロフィール。<br>少し長文でもいいかもしれませんね。";
+    const siteSettings = await getSiteSettings("profile")
+    const english_name = siteSettings.profile.english_name;
+    const name = siteSettings.profile.name;
+    const description = siteSettings.profile.description;
 
     return (
         <div className={styles.container}>

@@ -2,11 +2,14 @@ import { NextRequest } from "next/server";
 import xss from 'xss';
 import nodemailer from "nodemailer";
 import * as EmailValidator from 'email-validator'
+import { getSiteSettings } from "@/lib/cms-api";
 
 export async function POST(req: NextRequest) {
     const requestBody = await req.json()
     const { data } = requestBody
     const { name, email, message } = data
+    const siteSettings = await getSiteSettings("email")
+    const notifyEmail = siteSettings.email
 
     const email_trimmed = email.trim()
     if (!EmailValidator.validate(email_trimmed))
@@ -34,7 +37,7 @@ export async function POST(req: NextRequest) {
     })
     const toHostMailData = {
         from: `じゅーるで通知<${process.env.MAIL_USER}>`,
-        to: process.env.NOTIFY_EMAIL,
+        to: notifyEmail,
         subject: `【じゅーるで】お問合せがありました`,
         text: `${validated_message} send from ${validated_name}`,
         html: `
