@@ -2,13 +2,15 @@ import Link from 'next/link';
 import styles from './header.module.css';
 import Container from '@/components/container/container'
 import { Bungee } from 'next/font/google';
+import { getSiteSettings } from '@/lib/cms-api';
 
 const logoFontInstance = Bungee({ subsets: ['latin'], weight: '400' })
 
-export default function Header() {
-    const logoText = "CAMPUS";
-    const siteTitle = "キャンパス";
-    const siteDesc = "人間の大学生のポートフォリオ";
+export default async function Header() {
+    const settings = await getSiteSettings("siteLogo,siteTitle,siteDesc")
+    const logoText = settings.siteLogo;
+    const siteTitle = settings.siteTitle;
+    const siteDesc = settings.siteDesc;
 
     return (
         <header className={styles.header}>
