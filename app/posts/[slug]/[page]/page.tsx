@@ -20,10 +20,19 @@ import { cookies, draftMode } from "next/headers"
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const slug = (await params).slug
-    const post = await getPostBySlug(slug)
-    const url = process.env.APP_URL;
+
+    const { isEnabled: isInPreviewMode } = await draftMode()
+    const cookieStore = cookies()
+    console.log(`isEnabled: ${isInPreviewMode}`)
+    const draftKey = isInPreviewMode ? (await cookieStore).get("draftKey")?.value : undefined
+
+    const post = (!isInPreviewMode)
+        ? await getPostBySlug(slug)
+        : await getPostByID(slug, { draftKey });
+
+    const categories = post.categories;
     let str_categories = ""
-    post.categories.map((value: any) => {
+    categories.map((value: any) => {
         str_categories += encodeURIComponent(value.name) + ','
     })
     const ogImage = {
