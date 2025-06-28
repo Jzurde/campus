@@ -123,3 +123,19 @@ export async function getAllPostsByCategory(categoryID: string, limit = 100) {
         console.log(e)
     }
 }
+
+export async function getSiteSettings(fields?: string) {
+    try {
+        const settings = await client.get({
+            endpoint: 'settings',
+            queries: {
+                fields: fields || ""
+            }
+        })
+        return settings
+    }
+    catch (e) {
+        console.log('==getSiteSettings==')
+        console.log(e)
+    }
+}
