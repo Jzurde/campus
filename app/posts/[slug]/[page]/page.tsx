@@ -11,7 +11,7 @@ import SNS from "@/components/sns/sns"
 import { LargeTile } from "@/components/tile/tile"
 import TileContainer from "@/components/tile_container/tile_container"
 import { TwoColumn, TwoColumnMain, TwoColumnSidebar } from "@/components/two_columns/two_columns"
-import { getAllSlugs, getPostByID, getPostBySlug } from "@/lib/cms-api"
+import { getAllSlugs, getPostByID, getPostBySlug, getSiteSettings } from "@/lib/cms-api"
 import Meta from "@/lib/meta"
 import { prevNextPost } from "@/lib/prevnext_post"
 import { returnSyntaxHighlight } from "@/lib/setSyntaxHighlight"
@@ -74,7 +74,6 @@ export default async function Post({ params }: {
     const { slug } = await params
     const page = parseInt((await params).page, 10) || 1
 
-
     const { isEnabled: isInPreviewMode } = await draftMode()
     const cookieStore = cookies()
     console.log(`isEnabled: ${isInPreviewMode}`)
@@ -114,11 +113,13 @@ export default async function Post({ params }: {
         page * itemsPerPage
     ).join("<hr>");
 
+    const siteSettings = await getSiteSettings("siteUrl")
+
     const title = post.title;
     const publish = (post.publishedAt) ? post.publishedAt : now.toISOString();
     content = returnSyntaxHighlight(content);
     const categories = post.categories;
-    const url = process.env.APP_URL;
+    const url = siteSettings.siteUrl;
     prevPost = (prevPost) ? prevPost : { isValid: false };
     nextPost = (nextPost) ? nextPost : { isValid: false };
     const currentPage = page;

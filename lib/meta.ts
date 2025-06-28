@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { eyecatchLocal } from "./constant";
+import { getSiteSettings } from "./cms-api";
 
-export default function Meta({
+export default async function Meta({
     pageTitle, pageDescription, pageImg, pageImgWidth, pageImgHeight, url
 }: {
     pageTitle?: string;
@@ -12,8 +13,12 @@ export default function Meta({
     url?: string;
 }) {
 
-    const siteTitle = "CAMPUS"
-    const siteUrl = process.env.APP_URL
+    const siteSettings = await getSiteSettings()
+
+    const siteTitle = siteSettings.siteTitle
+    const siteUrl = siteSettings.siteUrl
+    const siteType = siteSettings.siteType[0]
+
     const metaTitle = (pageTitle && pageTitle != siteTitle) ? `${pageTitle} | ${siteTitle}` : siteTitle
     const metaDesciption = pageDescription ? pageDescription : `${pageTitle}に関する発言`
 
@@ -38,7 +43,7 @@ export default function Meta({
                 },
             ],
             locale: 'ja_JP',
-            type: 'website',
+            type: siteType,
         },
         twitter: {
             card: 'summary_large_image',
