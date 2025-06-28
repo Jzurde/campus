@@ -23,10 +23,6 @@ export async function POST(req: NextRequest) {
     if (validated_message === '')
         return new Response('Message is required', { status: 400 })
 
-    console.log("==MAIL==")
-    console.log(process.env.MAIL_USER)
-    console.log(process.env.MAIL_PASSWORD)
-
     const transporter = nodemailer.createTransport({
         host: "sv85.star.ne.jp",
         port: 465, //465
