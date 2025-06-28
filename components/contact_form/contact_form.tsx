@@ -1,7 +1,7 @@
 'use client'
 
-import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import styles from './contact_form.module.css';
 import { faCheck, faPaperPlane, faHourglass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -80,26 +80,32 @@ export default function ContactForm() {
 
         if (!(d_name && d_email && d_message && d_confirm)) return
 
-        let data = {
-            name: d_name,
-            email: d_email,
-            message: d_message,
+        let sendData = {
+            data: {
+                name: d_name,
+                email: d_email,
+                message: d_message,
+            }
         }
 
         setSending(true)
 
-        await fetch("api/contact", {
+        const response = await fetch("/api/contact", {
             method: "POST",
             headers: {
                 Accept: "application/json, text/plain",
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(data)
-        }).then((res) => {
-            if (res.status === 200) {
-                goAfter()
-            }
+            body: JSON.stringify(sendData)
         })
+
+        if (response.ok) {
+            goAfter()
+        }
+        else {
+            const errorMessage = await response.text()
+            alert(`Mail Sending Error. (${response.status}) ${errorMessage}`)
+        }
     };
     return (
         <Container>
@@ -138,4 +144,26 @@ export default function ContactForm() {
             </form>
         </Container>
     )
+}
+
+export function ContactFormDone() {
+    const router = useRouter();
+    const searchParams = useSearchParams()
+    const [isDisplay, setIsDisplay] = useState('');
+
+    useEffect(() => {
+        const display = searchParams?.get('display')
+        if (display === 'ok') {
+            setIsDisplay(display)
+        } else {
+            router.push('/404')
+        }
+    }, [searchParams, router])
+
+    return (<> {isDisplay && (
+        <Container>
+            <ListHeader title="お問合せ" subtitle="お問合せ完了" />
+            <p>お問合せが完了しました。<br />お問合せ確認メールを送信しておりますのでご確認ください。</p>
+        </Container>
+    )} </>);
 }
