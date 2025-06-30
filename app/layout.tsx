@@ -6,6 +6,7 @@ import Header from '@/components/header/header';
 import '@/app/globals.css';
 import styles from './layout.module.css';
 import Footer from '@/components/footer/footer';
+import { getSiteSettings } from '@/lib/cms-api';
 config.autoAddCss = false;
 
 const NotoSansJP = Noto_Sans_JP({
@@ -13,11 +14,15 @@ const NotoSansJP = Noto_Sans_JP({
   subsets: ["latin"]
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
+  const siteSetting = await getSiteSettings("googleAnalytics");
+  const analyticsKey = siteSetting?.googleAnalytics;
+
   return (
     <html lang="ja">
       <body className={`${NotoSansJP.className}`}>
@@ -26,7 +31,7 @@ export default function RootLayout({
           <main className={styles.main}>{children}</main>
           <Footer />
         </div>
-        <GoogleAnalytics gaId="G-PRH832W7M3" />
+        {(analyticsKey)&&<GoogleAnalytics gaId={analyticsKey} />}
       </body>
     </html>
   );
