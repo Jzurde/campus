@@ -1,14 +1,16 @@
 import Container from "@/components/container/container";
 import Topics from "@/components/topics/topics";
 import Works from "@/components/works/works";
-import { getAllSlugs, getAllWorksSlug, getCategories } from "@/lib/cms-api";
+import { getAllSlugs, getAllWorksSlug, getCategories, getSiteSettings } from "@/lib/cms-api";
 import Meta from "@/lib/meta";
 import { Metadata } from "next";
 
 export async function generateMetadata() {
+  const settings = await getSiteSettings("siteLogo,siteDesc")
+  console.log(settings)
   return Meta({
-    pageTitle: "CAMPUS",
-    pageDescription: "人間の大学生のポートフォリオ"
+    pageTitle: settings.siteLogo,
+    pageDescription: settings.siteDesc
   })
 }
 
