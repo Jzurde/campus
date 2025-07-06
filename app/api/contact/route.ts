@@ -8,8 +8,6 @@ export async function POST(req: NextRequest) {
     const requestBody = await req.json()
     const { data } = requestBody
     const { name, email, message } = data
-    const siteSettings = await getSiteSettings("email")
-    const notifyEmail = siteSettings.email
 
     const email_trimmed = email.trim()
     if (!EmailValidator.validate(email_trimmed))
@@ -35,12 +33,12 @@ export async function POST(req: NextRequest) {
             pass: process.env.MAIL_PASSWORD,
         }
     })
-    const toHostMailData = {
-        from: `じゅーるで通知<${process.env.MAIL_USER}>`,
-        to: notifyEmail,
-        subject: `【じゅーるで】お問合せがありました`,
-        text: `${validated_message} send from ${validated_name}`,
-        html: `
+
+    const siteSettings = (await getSiteSettings("contactForm")).contactForm
+    const notifyEmail = siteSettings.notifyEmail
+    const notifyFrom = siteSettings.hasOwnProperty('notifyFrom') ? siteSettings.notifyFrom : 'CAMPUSお問合せフォーム'
+    const notifySubject = siteSettings.hasOwnProperty('notifySubject') ? siteSettings.notifySubject : '【CAMPUS】問合せがありました'
+    const notifyDefaultMessage = `
         以下のお問合せがありました。
         <h4>名前</h4>
         <p>${validated_name}</p>
@@ -48,29 +46,45 @@ export async function POST(req: NextRequest) {
         <p>${validated_email}</p>
         <h4>問合せ内容</h4>
         <p>${validated_message}</p>
-        `,
+        `
+    const notifyMessage = siteSettings.hasOwnProperty('notifyMessage') ? 
+        siteSettings.notifyMessage.replaceAll("#name", validated_name)
+        .replaceAll("#email", validated_email)
+        .replaceAll("#message", validated_message)
+        : notifyDefaultMessage
+
+    const toHostMailData = {
+        from: `${notifyFrom}<${process.env.MAIL_USER}>`,
+        to: notifyEmail,
+        subject: notifySubject,
+        html: notifyMessage,
     };
-    const toCustomerMailData = {
-        from: `じゅーるで自動送信アカウント<${process.env.MAIL_USER}>`,
-        to: validated_email,
-        subject: `【じゅーるで】お問合せありがとうございます`,
-        text: `この度はじゅーるでポートフォリオサイト(https://jzurde.jp)よりお問合せいただきましてありがとうございます。
-        以下お問合せをお受けいたしました。
-        【お名前】: ${validated_name}【メールアドレス】: ${validated_email}【お問合せ内容】: ${validated_message}
-        なお、本メールにお心あたりがございませんでしたら、無視してください。`,
-        html: `
-        <img src="https://mail.jzurde.jp/logo.png" width="180px">
+
+    const confirmFrom = siteSettings.hasOwnProperty('confirmFrom') ? siteSettings.confirmFrom : 'CAMPUS | 人間の大学生のポートフォリオ'
+    const confirmSubject = siteSettings.hasOwnProperty('confirmSubject') ? siteSettings.confirmSubject : '【CAMPUS】お問合せありがとうございます'
+    const confirmDefaultMessage = `
     <h2 style="color: #444444;">お問合せありがとうございます</h2>
     <p>${validated_name}様</p>
-    <p>この度は、<a href="https://jzurde.jp">じゅーるで</a>からお問合せいただきましてありがとうございます。<br>以下お問合せをお受けいたしました。</p>
+    <p>この度は、お問合せいただきましてありがとうございます。<br>以下お問合せをお受けいたしました。</p>
     <h3 style="color: #444444;">お問合せ内容</h3>
     <h4 style="color: #444444; margin-bottom: 0;">ご氏名</h4>
     <p style="margin-top: 2px;">${validated_name}様 (${validated_email})</p>
     <h4 style="color: #444444; margin-bottom: 0;">お問合せ内容</h4>
     <p style="margin-top: 2px;">${validated_message}</p>
-    <small>※1 - なお、本メールにお心あたりがございませんでしたら、破棄していただきますようお願いいたします。<br>
+    <small>※1 - 本メールにお心あたりがございませんでしたら、破棄していただきますようお願いいたします。<br>
     ※2 - このメールは送信専用です。ご返信いただくことはできませんのでご注意ください。</small>
         `
+    const confirmMessage = siteSettings.hasOwnProperty('confirmMessage') ? 
+        siteSettings.confirmMessage.replaceAll("#name", validated_name)
+        .replaceAll("#email", validated_email)
+        .replaceAll("#message", validated_message)
+        : confirmDefaultMessage
+
+    const toCustomerMailData = {
+        from: `${confirmFrom}<${process.env.MAIL_USER}>`,
+        to: validated_email,
+        subject: confirmSubject,
+        html: confirmMessage
     }
 
     try {
