@@ -28,6 +28,10 @@
     margin-bottom: var(--space-lg);
 }
 
+.ignore_margin_bottom {
+    margin-bottom: 0 !important;
+}
+
 .stack a {
     color: var(--accent);
     margin: 2px;
