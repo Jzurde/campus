@@ -11,8 +11,6 @@ export async function POST(req: NextRequest) {
     const { name, email, message } = data
     const transporterInstance = getTransporter()
 
-    console.log(transporterInstance)
-
     if (!transporterInstance.contactFormValid)
         return new Response('Transporter invalid', { status: 500 })
 

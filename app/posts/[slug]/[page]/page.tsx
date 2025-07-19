@@ -23,7 +23,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
     const { isEnabled: isInPreviewMode } = await draftMode()
     const cookieStore = cookies()
-    console.log(`isEnabled: ${isInPreviewMode}`)
     const draftKey = isInPreviewMode ? (await cookieStore).get("draftKey")?.value : undefined
 
     const post = (!isInPreviewMode)
@@ -47,15 +46,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         height: 630,
     } : post.eyecatch
 
-    console.log("======METa======")
-    console.log({
-        pageTitle: metaTitle,
-        pageDescription: metaDesc,
-        pageImg: ogImage.url,
-        pageImgWidth: ogImage.width,
-        pageImgHeight: ogImage.height
-    })
-
     return Meta({
         pageTitle: metaTitle,
         pageDescription: metaDesc,
@@ -66,7 +56,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export async function generateStaticParams() {
-    console.log("PAGEPAGE!")
     const allSlugs = await getAllSlugs();
 
     const paths = [];
@@ -92,7 +81,6 @@ export default async function Post({ params }: {
 
     const { isEnabled: isInPreviewMode } = await draftMode()
     const cookieStore = cookies()
-    console.log(`isEnabled: ${isInPreviewMode}`)
     const draftKey = isInPreviewMode ? (await cookieStore).get("draftKey")?.value : undefined
 
     const now = new Date();
@@ -100,11 +88,6 @@ export default async function Post({ params }: {
     const post = (!isInPreviewMode)
         ? await getPostBySlug(slug)
         : await getPostByID(slug, { draftKey });
-
-    console.log(draftKey)
-
-    console.log("===post===")
-    console.log(post)
 
     if (!post) return { notFound: true };
 
