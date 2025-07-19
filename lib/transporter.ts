@@ -1,7 +1,5 @@
 export function getTransporter() {
-    console.log("hi")
     if (process.env.MAIL_USER && process.env.MAIL_PASS) {
-        console.log("true")
         const username = process.env.MAIL_USER
         const password = process.env.MAIL_PASS
         if (process.env.MAIL_SERVICE) {
@@ -31,7 +29,6 @@ export function getTransporter() {
             }
         }
     }
-    console.log("false")
     return {
         contactFormValid: false,
         transporter: {}

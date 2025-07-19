@@ -25,9 +25,6 @@ export async function getPostBySlug(slug: string) {
 }
 
 export async function getPostByID(contentId: string, draftKey: MicroCMSQueries) {
-    console.log("APIAPI")
-    console.log(contentId)
-    console.log(draftKey)
     try {
         const post = await client.get({
             endpoint: 'posts',

@@ -6,7 +6,6 @@ import Meta from "@/lib/meta";
 
 export async function generateMetadata() {
   const settings = await getSiteSettings("siteLogo,siteDesc")
-  console.log(settings)
   return Meta({
     pageTitle: settings.siteLogo,
     pageDescription: settings.siteDesc
