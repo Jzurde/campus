@@ -3,9 +3,14 @@ import ListHeader from "@/components/list_header/list_header"
 import WorkList from "@/components/work_list.js/work_list"
 import { getAllWorksSlug } from "@/lib/cms-api"
 import Meta from "@/lib/meta"
-import { Metadata } from "next"
 
-export const metadata: Metadata = Meta({ pageTitle: "全ての作品", pageDescription: "これまでのすべての作品一覧" })
+export async function generateMetadata() {
+    return Meta({
+        pageTitle: "全ての作品",
+        pageDescription: "これまでのすべての作品一覧"
+    })
+}
+
 
 export default async function AllWorks() {
 

@@ -10,10 +10,6 @@ export function LargeTile({
     caption?: string;
     isLCP?: boolean;
 }) {
-    // console.log("ggggg---->>>")
-    // console.log(this_link.this_link)
-    // console.log("ggggg---->>>")
-    // console.log(this_link.link_links)
     return (
         <Link href={link_data.this_link.link}>
             <div className={styles.large}>

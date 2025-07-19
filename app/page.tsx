@@ -3,7 +3,6 @@ import Topics from "@/components/topics/topics";
 import Works from "@/components/works/works";
 import { getAllSlugs, getAllWorksSlug, getCategories, getSiteSettings } from "@/lib/cms-api";
 import Meta from "@/lib/meta";
-import { Metadata } from "next";
 
 export async function generateMetadata() {
   const settings = await getSiteSettings("siteLogo,siteDesc")
