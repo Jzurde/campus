@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         pathname: '/assets/**',
       },
       {
+        protocol: 'https',
+        hostname: process.env.SELF_HOSTNAME!,
+        pathname: '/**',
+      },
+      {
         protocol: 'http',
         hostname: 'localhost',
         port: '3000',

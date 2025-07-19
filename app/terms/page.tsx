@@ -1,15 +1,12 @@
-import { InfoBox } from "@/components/code/code";
 import Container, { SidebarContainer } from "@/components/container/container";
 import ConvertBody from "@/components/convert_body/convert_body";
 import ListHeader from "@/components/list_header/list_header";
 import PostBody from "@/components/post_body/post_body";
 import Profile from "@/components/profile/profile";
-import PureLink from "@/components/pure_link/pure_link";
 import SNS from "@/components/sns/sns";
 import { TwoColumn, TwoColumnMain, TwoColumnSidebar } from "@/components/two_columns/two_columns";
 import { getSiteSettings } from "@/lib/cms-api";
 import Meta from "@/lib/meta";
-import { Metadata } from "next";
 
 export async function generateMetadata() {
     return Meta({
