@@ -29,20 +29,36 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const post = (!isInPreviewMode)
         ? await getPostBySlug(slug)
         : await getPostByID(slug, { draftKey });
+    const seo = post.seo
 
     const categories = post.categories;
     let str_categories = ""
     categories.map((value: any) => {
         str_categories += encodeURIComponent(value.name) + ','
     })
-    const ogImage = {
+
+    const metaTitle = (seo.hasOwnProperty("metaTitle")) ? seo.metaTitle : post.title
+    const metaDesc = (seo.hasOwnProperty("metaDesc")) ? seo.metaDesc : `${post.title}に関する発言`
+
+    const ogImage = (!seo.ogpCard || !post.hasOwnProperty('eyecatch')) ? {
         url: `/posts/${slug}/twitter-image`,
         // url: `${url}/api/ogpcard?title=${encodeURIComponent(post.title)}\&categories=${str_categories.slice(0, -1)}`,
         width: 1200,
         height: 630,
-    }
+    } : post.eyecatch
+
+    console.log("======METa======")
+    console.log({
+        pageTitle: metaTitle,
+        pageDescription: metaDesc,
+        pageImg: ogImage.url,
+        pageImgWidth: ogImage.width,
+        pageImgHeight: ogImage.height
+    })
+
     return Meta({
-        pageTitle: post.title,
+        pageTitle: metaTitle,
+        pageDescription: metaDesc,
         pageImg: ogImage.url,
         pageImgWidth: ogImage.width,
         pageImgHeight: ogImage.height

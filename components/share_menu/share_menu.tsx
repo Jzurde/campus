@@ -1,17 +1,22 @@
+import { getSiteSettings } from '@/lib/cms-api';
 import styles from './share_menu.module.css'
 import { faBluesky, faFacebook, faLine, faThreads, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function ShareMenu({
+export default async function ShareMenu({
     url, title, fullSize = false
 }: {
     url: string;
     title: string;
     fullSize?: boolean;
 }) {
+
+    const siteSettings = await getSiteSettings("siteLogo,siteTitle")
+    const siteLogo = siteSettings.siteLogo
+    const siteTitle = siteSettings.siteTitle
     const encodedUrl = encodeURIComponent(url);
-    const encodedTitle = encodeURIComponent(title + " | じゅーるで(Jzurde)");
+    const encodedTitle = encodeURIComponent(title + ` | ${siteTitle}(${siteLogo})`);
 
     return (
         <div className={(fullSize) ? styles.full_container : styles.container}>
@@ -20,7 +25,7 @@ export default function ShareMenu({
                 <h6>この記事をシェアする</h6>
             </div>
             <div className={styles.container_inner}>
-                <a href={`https://x.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}&related=Jzurde_`} target="_blank" rel="noopener noreferrer">
+                <a href={`https://x.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`} target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faXTwitter} />
                 </a>
                 <a href={`http://www.facebook.com/share.php?u=${encodedUrl}`} target="_blank" rel="noopener noreferrer">

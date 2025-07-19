@@ -40,8 +40,8 @@ export default async function Home() {
 
   return (
     <Container>
-      <Topics posts={topic_posts} categories={topic_categories} />
-      <Works works={works} />
+      {(topic_posts.length > 0) && <Topics posts={topic_posts} categories={topic_categories} />}
+      {(works.length > 0) && <Works works={works} />}
     </Container>
   )
 }
