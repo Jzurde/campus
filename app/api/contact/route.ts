@@ -3,11 +3,18 @@ import xss from 'xss';
 import nodemailer from "nodemailer";
 import * as EmailValidator from 'email-validator'
 import { getSiteSettings } from "@/lib/cms-api";
+import { getTransporter } from "@/lib/transporter";
 
 export async function POST(req: NextRequest) {
     const requestBody = await req.json()
     const { data } = requestBody
     const { name, email, message } = data
+    const transporterInstance = getTransporter()
+
+    console.log(transporterInstance)
+
+    if (!transporterInstance.contactFormValid)
+        return new Response('Transporter invalid', { status: 500 })
 
     const email_trimmed = email.trim()
     if (!EmailValidator.validate(email_trimmed))
@@ -24,15 +31,7 @@ export async function POST(req: NextRequest) {
     if (validated_message === '')
         return new Response('Message is required', { status: 400 })
 
-    const transporter = nodemailer.createTransport({
-        host: "sv85.star.ne.jp",
-        port: 465, //465
-        secure: true,
-        auth: {
-            user: process.env.MAIL_USER,
-            pass: process.env.MAIL_PASSWORD,
-        }
-    })
+    const transporter = nodemailer.createTransport(transporterInstance.transporter as nodemailer.TransportOptions)
 
     const siteSettings = (await getSiteSettings("contactForm")).contactForm
     const notifyEmail = siteSettings.notifyEmail
@@ -47,10 +46,10 @@ export async function POST(req: NextRequest) {
         <h4>問合せ内容</h4>
         <p>${validated_message}</p>
         `
-    const notifyMessage = siteSettings.hasOwnProperty('notifyMessage') ? 
+    const notifyMessage = siteSettings.hasOwnProperty('notifyMessage') ?
         siteSettings.notifyMessage.replaceAll("#name", validated_name)
-        .replaceAll("#email", validated_email)
-        .replaceAll("#message", validated_message)
+            .replaceAll("#email", validated_email)
+            .replaceAll("#message", validated_message)
         : notifyDefaultMessage
 
     const toHostMailData = {
@@ -74,10 +73,10 @@ export async function POST(req: NextRequest) {
     <small>※1 - 本メールにお心あたりがございませんでしたら、破棄していただきますようお願いいたします。<br>
     ※2 - このメールは送信専用です。ご返信いただくことはできませんのでご注意ください。</small>
         `
-    const confirmMessage = siteSettings.hasOwnProperty('confirmMessage') ? 
+    const confirmMessage = siteSettings.hasOwnProperty('confirmMessage') ?
         siteSettings.confirmMessage.replaceAll("#name", validated_name)
-        .replaceAll("#email", validated_email)
-        .replaceAll("#message", validated_message)
+            .replaceAll("#email", validated_email)
+            .replaceAll("#message", validated_message)
         : confirmDefaultMessage
 
     const toCustomerMailData = {
