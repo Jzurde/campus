@@ -7,7 +7,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
-    title: '...',
+    title: 'お問合せ完了',
     description: '...',
     robots: {
         index: false,
