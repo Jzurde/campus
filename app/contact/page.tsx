@@ -3,6 +3,10 @@ import Meta from '@/lib/meta';
 import { getSiteSettings } from '@/lib/cms-api';
 import { getIfContactFormValid } from '@/lib/transporter';
 import { notFound } from 'next/navigation';
+import Container from '@/components/container/container';
+import ConvertBody from '@/components/convert_body/convert_body';
+import ListHeader from '@/components/list_header/list_header';
+import PostBody from '@/components/post_body/post_body';
 
 export async function generateMetadata() {
     return Meta({
@@ -19,16 +23,22 @@ export default async function Contact() {
     const email_plaiceholder = settings.hasOwnProperty('email_plaiceholder') ? settings.email_plaiceholder : "address@email.com"
     const message_plaiceholder = settings.hasOwnProperty('message_plaiceholder') ? settings.message_plaiceholder : "お問い合わせ内容"
 
-    if (!getIfContactFormValid()) {
+    if (!(await getIfContactFormValid())) {
         notFound()
     }
 
     return (
-        <ContactForm
-            description_html={description_html}
-            name_plaiceholder={name_plaiceholder}
-            email_plaiceholder={email_plaiceholder}
-            message_plaiceholder={message_plaiceholder}
-        />
+        <Container>
+            {/* <Meta pageTitle="お問合せ" pageDesc="お問合せフォーム" /> */}
+            <ListHeader title="お問合せ" subtitle="お問合せフォーム" />
+            <PostBody ignoreMarginBottom={true}>
+                <ConvertBody contentHTML={description_html} />
+            </PostBody>
+            <ContactForm
+                name_plaiceholder={name_plaiceholder}
+                email_plaiceholder={email_plaiceholder}
+                message_plaiceholder={message_plaiceholder}
+            />
+        </Container>
     )
 }

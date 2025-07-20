@@ -1,3 +1,5 @@
+import { getSiteSettings } from "./cms-api"
+
 export function getTransporter() {
     if (process.env.MAIL_USER && process.env.MAIL_PASS) {
         const username = process.env.MAIL_USER
@@ -35,9 +37,10 @@ export function getTransporter() {
     }
 }
 
-export function getIfContactFormValid() {
+export async function getIfContactFormValid() {
     const transporter = getTransporter()
+    const siteSettings = (await getSiteSettings("contactForm")).contactForm
     const isContactFormValid = transporter.contactFormValid
 
-    return isContactFormValid
+    return isContactFormValid && siteSettings.hasOwnProperty('notifyEmail')
 }

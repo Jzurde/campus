@@ -16,7 +16,7 @@ export default async function Meta({
     const siteSettings = await getSiteSettings()
 
     const siteTitle = siteSettings.siteTitle
-    const siteUrl = siteSettings.siteUrl
+    const siteUrl = `https://${process.env.SELF_HOSTNAME}`
     const siteType = siteSettings.siteType[0]
 
     const metaTitle = (pageTitle && pageTitle != siteTitle) ? `${pageTitle} | ${siteTitle}` : siteTitle
