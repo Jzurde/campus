@@ -1,15 +1,21 @@
 import { ContactFormDone } from "@/components/contact_form/contact_form";
 import { getSiteSettings } from "@/lib/cms-api";
-import Meta from "@/lib/meta";
 import { getIfContactFormValid } from "@/lib/transporter";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-export async function generateMetadata() {
-    return Meta({
-        pageTitle: "お問合せ完了",
-        pageDescription: "お問合せが完了しました"
-    })
-}
+export const metadata: Metadata = {
+    title: '...',
+    description: '...',
+    robots: {
+        index: false,
+        follow: false,
+        nocache: true,
+        noarchive: true,
+        noimageindex: true,
+        nosnippet: true,
+    },
+};
 
 export default async function ContactDone() {
     const settings = (await getSiteSettings("contactPage")).contactPage
