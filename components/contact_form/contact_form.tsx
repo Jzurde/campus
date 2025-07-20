@@ -5,8 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import styles from './contact_form.module.css';
 import { faCheck, faPaperPlane, faHourglass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Container from "../container/container";
-import ListHeader from "../list_header/list_header";
 import LinkButton from "../link_button/link_button";
 import { Noto_Sans_JP, Source_Code_Pro } from 'next/font/google'
 import PostBody from "../post_body/post_body";
@@ -23,12 +21,10 @@ const SourceCodePro = Source_Code_Pro({
 });
 
 export default function ContactForm({
-    description_html,
     name_plaiceholder,
     email_plaiceholder,
     message_plaiceholder
 }: {
-    description_html:string,
     name_plaiceholder: string,
     email_plaiceholder: string,
     message_plaiceholder: string
@@ -121,46 +117,39 @@ export default function ContactForm({
     };
 
     return (
-        <Container>
-            {/* <Meta pageTitle="お問合せ" pageDesc="お問合せフォーム" /> */}
-            <ListHeader title="お問合せ" subtitle="お問合せフォーム" />
-            <PostBody ignoreMarginBottom={true}>
-                <ConvertBody contentHTML={description_html} />
-            </PostBody>
-            <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
-                <div className={nameClassname}>
-                    <label htmlFor="name">お名前</label><span className={styles.warning}>名前を入力してください</span>
-                    <input type="text" id="name" className={NotoSansJP.className} placeholder={name_plaiceholder} ref={nameRef} onInput={() => handleName()} />
-                </div>
+        <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
+            <div className={nameClassname}>
+                <label htmlFor="name">お名前</label><span className={styles.warning}>名前を入力してください</span>
+                <input type="text" id="name" className={NotoSansJP.className} placeholder={name_plaiceholder} ref={nameRef} onInput={() => handleName()} />
+            </div>
 
-                <div className={emailClassname}>
-                    <label htmlFor="email">メールアドレス</label><span className={styles.warning}>メールアドレスを正しく入力してください</span>
-                    <input type="email" id="email" className={SourceCodePro.className} placeholder={email_plaiceholder} ref={emailRef} onInput={() => handleEmail()} />
-                </div>
+            <div className={emailClassname}>
+                <label htmlFor="email">メールアドレス</label><span className={styles.warning}>メールアドレスを正しく入力してください</span>
+                <input type="email" id="email" className={SourceCodePro.className} placeholder={email_plaiceholder} ref={emailRef} onInput={() => handleEmail()} />
+            </div>
 
-                <div className={messageClassname}>
-                    <label htmlFor="content">お問合せ内容</label><span className={styles.warning}>お問合せ内容を入力してください</span>
-                    <textarea id="content" className={NotoSansJP.className} placeholder={message_plaiceholder} ref={messageRef} onInput={() => handleMessage()}></textarea>
-                </div>
+            <div className={messageClassname}>
+                <label htmlFor="content">お問合せ内容</label><span className={styles.warning}>お問合せ内容を入力してください</span>
+                <textarea id="content" className={NotoSansJP.className} placeholder={message_plaiceholder} ref={messageRef} onInput={() => handleMessage()}></textarea>
+            </div>
 
-                <div className={confirmClassname}>
-                    <input type="checkbox" id="terms" className={styles.terms} ref={confirmRef} onInput={() => handleConfirm()} />
-                    <label htmlFor="terms" className={styles.terms_label}>
-                        <div className={styles.terms_check}><FontAwesomeIcon icon={faCheck} size="xs" /></div>
-                        <LinkButton link="../terms" title="個人情報に関する声明" type={3} newTab />に同意します
-                    </label>
-                    <span className={styles.warning}>同意が必要です</span>
-                </div>
-                <div className={styles.form_submit}>
-                    <label htmlFor="form_submit">送信する</label>
-                    <button type="submit" id="form_submit" className="form_submit-deny" disabled={isSending}><FontAwesomeIcon icon={buttonIcon} /></button>
-                </div>
-            </form>
-        </Container>
+            <div className={confirmClassname}>
+                <input type="checkbox" id="terms" className={styles.terms} ref={confirmRef} onInput={() => handleConfirm()} />
+                <label htmlFor="terms" className={styles.terms_label}>
+                    <div className={styles.terms_check}><FontAwesomeIcon icon={faCheck} size="xs" /></div>
+                    <LinkButton link="../terms" title="個人情報に関する声明" type={3} newTab />に同意します
+                </label>
+                <span className={styles.warning}>同意が必要です</span>
+            </div>
+            <div className={styles.form_submit}>
+                <label htmlFor="form_submit">送信する</label>
+                <button type="submit" id="form_submit" className="form_submit-deny" disabled={isSending}><FontAwesomeIcon icon={buttonIcon} /></button>
+            </div>
+        </form>
     )
 }
 
-export function ContactFormDone({message_html}: { message_html: string }) {
+export function ContactFormDone({ message_html }: { message_html: string }) {
     const router = useRouter();
     const searchParams = useSearchParams()
     const [isDisplay, setIsDisplay] = useState('');
@@ -175,11 +164,8 @@ export function ContactFormDone({message_html}: { message_html: string }) {
     }, [searchParams, router])
 
     return (<> {isDisplay && (
-        <Container>
-            <ListHeader title="お問合せ" subtitle="お問合せ完了" />
-            <PostBody ignoreMarginBottom={true}>
-                <ConvertBody contentHTML={message_html} />
-            </PostBody>
-        </Container>
+        <PostBody ignoreMarginBottom={true}>
+            <ConvertBody contentHTML={message_html} />
+        </PostBody>
     )} </>);
 }

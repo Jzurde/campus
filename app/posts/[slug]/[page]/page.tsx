@@ -112,13 +112,11 @@ export default async function Post({ params }: {
         page * itemsPerPage
     ).join("<hr>");
 
-    const siteSettings = await getSiteSettings("siteUrl")
-
     const title = post.title;
     const publish = (post.publishedAt) ? post.publishedAt : now.toISOString();
     content = returnSyntaxHighlight(content);
     const categories = post.categories;
-    const url = siteSettings.siteUrl;
+    const url = `https://${process.env.SELF_HOSTNAME}`;
     prevPost = (prevPost) ? prevPost : { isValid: false };
     nextPost = (nextPost) ? nextPost : { isValid: false };
     const currentPage = page;

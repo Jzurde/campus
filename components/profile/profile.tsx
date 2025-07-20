@@ -20,7 +20,7 @@ export default async function Profile() {
             <h2 className={`${styles.profile_name} ${LogoFont.className}`}>{english_name}</h2>
             <h4>{name}</h4>
             <p>{parse(description)}</p>
-            {(getIfContactFormValid()) && <LinkButton title="お問合せ" link='/contact' />}
+            {(await getIfContactFormValid()) && <LinkButton title="お問合せ" link='/contact' />}
         </div>
     )
 }
