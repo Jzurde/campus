@@ -19,7 +19,7 @@ export default async function Meta({
     const siteUrl = `https://${process.env.SELF_HOSTNAME}`
     const siteType = siteSettings.siteType[0]
 
-    const metaTitle = (pageTitle && pageTitle != siteTitle) ? `${pageTitle} | ${siteTitle}` : siteTitle
+    const metaTitle = (pageTitle) ? `${pageTitle} | ${siteTitle}` : siteTitle
     const metaDesciption = pageDescription ? pageDescription : `${pageTitle}に関する発言`
 
     const img = pageImg || eyecatchLocal.url
