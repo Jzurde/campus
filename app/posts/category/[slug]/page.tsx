@@ -9,7 +9,7 @@ export async function generateStaticParams() {
     const allCategories = await getCategories(true);
 
     return allCategories.map(({ slug }: { slug: string }) => ({
-        slug: `/posts/category/${slug}`
+        slug: `${slug}`
     }));
 }
 
