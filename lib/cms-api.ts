@@ -31,7 +31,8 @@ export async function getPostByID(contentId: string, draftKey: MicroCMSQueries) 
         const post = await client.get({
             endpoint: 'posts',
             contentId: contentId,
-            queries: draftKey
+            queries: draftKey,
+            customRequestInit: { cache: "no-store" },
         })
         return post
     }

@@ -1,7 +1,7 @@
 // app/api/preview/route.ts
 import { client } from "@/lib/cms-api";
 import { NextResponse } from "next/server";
-import { draftMode } from "next/headers";
+import { cookies, draftMode } from "next/headers";
 
 export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
@@ -24,6 +24,12 @@ export async function GET(req: Request) {
     }
 
     (await draftMode()).enable();
+
+    (await cookies()).set("draftKey", draftKey, {
+        httpOnly: true,
+        sameSite: "strict",
+        path: "/",
+    });
 
     const response = NextResponse.redirect(new URL(`/posts/${data.id}`, req.url), {
         status: 307,
