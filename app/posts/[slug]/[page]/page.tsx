@@ -19,7 +19,7 @@ import { Metadata } from "next"
 import { cookies, draftMode } from "next/headers"
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const slug = (await params).slug
+    const slug = params.slug
 
     const { isEnabled: isInPreviewMode } = await draftMode()
     const cookieStore = cookies()
@@ -66,7 +66,7 @@ export async function generateStaticParams() {
         const totalPages = Math.ceil(contentArray.length / itemsPerPage);
 
         for (let page = 1; page <= totalPages; page++) {
-            paths.push({ params: { slug, page: page.toString() } });
+            paths.push({ slug, page: page.toString() });
         }
     }
 
