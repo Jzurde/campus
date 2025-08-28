@@ -13,7 +13,7 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const categorySlug = (await params).slug;
     const allCategories = await getCategories(true)
     const category = allCategories.find(({ slug }: { slug: string }) => slug === categorySlug)
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return Meta({ pageTitle: `${category.name}`, pageDescription: `${category.name}に関する発言一覧` })
 }
 
-export default async function Category({ params }: { params: { slug: string } }) {
+export default async function Category({ params }: { params: Promise<{ slug: string }> }) {
     const categorySlug = (await params).slug;
     const allCategories = await getCategories(true)
     const category = allCategories.find(({ slug }: { slug: string }) => slug === categorySlug)
