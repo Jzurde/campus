@@ -22,7 +22,7 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const work = await getWorkBySlug((await params).slug);
 
     return Meta({
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     })
 }
 
-export default async function WorksPage({ params }: { params: { slug: string } }) {
+export default async function WorksPage({ params }: { params: Promise<{ slug: string }> }) {
     const work = await getWorkBySlug((await params).slug);
 
     if (!work) {

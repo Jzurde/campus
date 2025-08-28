@@ -18,7 +18,7 @@ import { returnSyntaxHighlight } from "@/lib/setSyntaxHighlight"
 import { Metadata } from "next"
 import { cookies, draftMode } from "next/headers"
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string; page: string }> }): Promise<Metadata> {
     const slug = (await params).slug
 
     const { isEnabled: isInPreviewMode } = await draftMode()
@@ -66,7 +66,7 @@ export async function generateStaticParams() {
         const totalPages = Math.ceil(contentArray.length / itemsPerPage);
 
         for (let page = 1; page <= totalPages; page++) {
-            paths.push({ params: { slug, page: page.toString() } });
+            paths.push({ slug, page: page.toString() });
         }
     }
 
@@ -74,10 +74,10 @@ export async function generateStaticParams() {
 }
 
 export default async function Post({ params }: {
-    params: { slug: string; page: string };
+    params: Promise<{ slug: string; page: string }>;
 }) {
-    const { slug } = params
-    const page = parseInt(params.page, 10) || 1
+    const { slug } = await params
+    const page = parseInt((await params).page, 10) || 1
 
     const { isEnabled: isInPreviewMode } = await draftMode()
     const cookieStore = cookies()
