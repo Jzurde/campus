@@ -18,8 +18,8 @@ import { returnSyntaxHighlight } from "@/lib/setSyntaxHighlight"
 import { Metadata } from "next"
 import { cookies, draftMode } from "next/headers"
 
-export async function generateMetadata({ params }: { params: { slug: string; page: string } }): Promise<Metadata> {
-    const slug = params.slug
+export async function generateMetadata({ params }: { params: Promise<{ slug: string; page: string }> }): Promise<Metadata> {
+    const slug = (await params).slug
 
     const { isEnabled: isInPreviewMode } = await draftMode()
     const cookieStore = cookies()
