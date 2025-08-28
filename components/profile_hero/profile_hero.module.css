@@ -1,0 +1,52 @@
+.profile_hero {
+    margin-top: var(--space-md);
+    padding: var(--space-md);
+    background-color: var(--gray);
+    border-radius: var(--space-sm);
+}
+
+.faceimg {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+}
+
+.profile_wrapper {
+    position: relative;
+    text-align: center;
+    margin-top: var(--space-md);
+}
+
+.username {
+    color: var(--accent);
+}
+
+.sns_link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+.sns_link a {
+    font-size: var(--text);
+    display: inline-flex;
+    gap: var(--space-xs);
+    align-items: center;
+    padding: var(--space-xs) var(--space-sm);
+    background-color: var(--preaccent);
+    border-radius: var(--space-sm);
+    transition-duration: 0.3s;
+}
+
+.sns_link a:hover {
+    background-color: var(--accent);
+    color: var(--white);
+}
+
+@media (width < 768px) {
+    .sns_link a>span {
+        display: none;
+    }
+}

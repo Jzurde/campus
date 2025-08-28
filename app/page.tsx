@@ -1,4 +1,5 @@
 import Container from "@/components/container/container";
+import ProfileHero from "@/components/profile_hero/profile_hero";
 import Topics from "@/components/topics/topics";
 import Works from "@/components/works/works";
 import { getAllSlugs, getAllWorksSlug, getCategories, getSiteSettings } from "@/lib/cms-api";
@@ -17,6 +18,8 @@ export default async function Home() {
   const topic_posts = await getAllSlugs(true, 6);
   const topic_categories = await getCategories()
   const works = await getAllWorksSlug(6)
+  const heroSettings = (await getSiteSettings("profile")).profile.toppageHero
+  const showHero = heroSettings[0] != "表示しない"
 
   for (const post of topic_posts) {
     // if (!post.hasOwnProperty('eyecatch')) {
@@ -38,6 +41,7 @@ export default async function Home() {
 
   return (
     <Container>
+      {(showHero) && <ProfileHero />}
       {(topic_posts.length > 0) && <Topics posts={topic_posts} categories={topic_categories} />}
       {(works.length > 0) && <Works works={works} />}
     </Container>
