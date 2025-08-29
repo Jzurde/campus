@@ -27,7 +27,8 @@ export async function GET(req: Request) {
 
     (await cookies()).set("draftKey", draftKey, {
         httpOnly: true,
-        sameSite: "strict",
+        secure: true,
+        sameSite: "none",
         path: "/",
     });
 
