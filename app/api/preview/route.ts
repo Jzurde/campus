@@ -5,12 +5,14 @@ import { cookies, draftMode } from "next/headers";
 
 export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
-    const draftKey = searchParams.get("draftKey");
+    let draftKey = searchParams.get("draftKey");
     const contentId = searchParams.get("contentId");
 
-    if (!draftKey || !contentId) {
+    if (!contentId) {
         return NextResponse.json({ message: "Missing query parameters" }, { status: 400 });
     }
+    if (!draftKey) draftKey = ""
+
 
     let data;
     try {
