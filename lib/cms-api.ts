@@ -3,8 +3,6 @@ import { createClient, MicroCMSQueries } from "microcms-js-sdk";
 const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN;
 const apiKey = process.env.MICROCMS_API_KEY;
 if (!serviceDomain || !apiKey) {
-    console.log(serviceDomain)
-    console.log(apiKey)
     throw new Error("環境変数 SERVICE_DOMAIN または API_KEY が設定されていません");
 }
 export const client = createClient({
