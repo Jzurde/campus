@@ -16,9 +16,6 @@ export default async function ProfileHero() {
     const name = profile.name;
     const imagename = profile.toppageHero[0]
 
-    console.log(imagename)
-    console.log(profile.toppageHero)
-
     return (
         <div className={styles.profile_hero}>
             <Image
