@@ -7,6 +7,7 @@ import Container from '@/components/container/container';
 import ConvertBody from '@/components/convert_body/convert_body';
 import ListHeader from '@/components/list_header/list_header';
 import PostBody from '@/components/post_body/post_body';
+import { Suspense } from 'react';
 
 export async function generateMetadata() {
     return Meta({
@@ -34,11 +35,13 @@ export default async function Contact() {
             <PostBody ignoreMarginBottom={true}>
                 <ConvertBody contentHTML={description_html} />
             </PostBody>
-            <ContactForm
-                name_plaiceholder={name_plaiceholder}
-                email_plaiceholder={email_plaiceholder}
-                message_plaiceholder={message_plaiceholder}
-            />
+            <Suspense fallback={<p>読み込み中...</p>}>
+                <ContactForm
+                    name_plaiceholder={name_plaiceholder}
+                    email_plaiceholder={email_plaiceholder}
+                    message_plaiceholder={message_plaiceholder}
+                />
+            </Suspense>
         </Container>
     )
 }
