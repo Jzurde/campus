@@ -5,6 +5,7 @@ import { getSiteSettings } from "@/lib/cms-api";
 import { getIfContactFormValid } from "@/lib/transporter";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
     title: 'お問合せ完了',
@@ -30,7 +31,9 @@ export default async function ContactDone() {
     return (
         <Container>
             <ListHeader title="お問合せ" subtitle="お問合せ完了" />
-            <ContactFormDone message_html={message_html} />
+            <Suspense fallback={<p>読み込み中...</p>}>
+                <ContactFormDone message_html={message_html} />
+            </Suspense>
         </Container>
     )
 }
