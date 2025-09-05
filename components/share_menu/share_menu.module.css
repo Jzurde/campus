@@ -11,8 +11,8 @@
 
 .full_container {
     display: flex;
+    align-items: center;
     flex-direction: column;
-    background-color: var(--gray);
     padding: var(--space-xs);
     border-radius: var(--space-xs);
     gap: var(--space-xs);
@@ -21,6 +21,7 @@
 .full_container>.container_title {
     display: flex;
     flex-grow: 1;
+    justify-content: center;
     align-items: center;
     gap: var(--space-xs);
     margin-left: var(--space-xs);
