@@ -64,9 +64,9 @@ export default function NotReadyScreen() {
                                         width="50"
                                         height="50" />
                                 </div>
-                                <h1 className={`${logoFontInstance.className} ${styles.header}`}>Hi, but...<br />We are not ready!</h1>
+                                <h1 className={`${logoFontInstance.className} ${styles.header}`}>Hi, but...<br /><span className={styles.pconly}>We are </span>not ready!</h1>
                                 <h3>このサイトは準備中です</h3>
-                                <p>サイトを公開するための初期設定を待っています。</p>
+                                <p className={styles.pconly}>サイトを公開するための初期設定を待っています。</p>
                                 <div className={styles.message_box}>
                                     <p>あなたがサイトの持ち主ですか?<br />
                                         プレビューからサイトの現状を確認しましょう。</p>
