@@ -11,8 +11,18 @@
     align-items: center;
 }
 
+.container {
+    display: inline-block;
+    margin: auto;
+    text-align: left;
+}
+
 .container p {
     margin-top: var(--space-xs);
+}
+
+.inner {
+    text-align: center;
 }
 
 .eyecatch {
