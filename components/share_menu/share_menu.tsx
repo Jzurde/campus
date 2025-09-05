@@ -13,7 +13,7 @@ export default async function ShareMenu({
 }) {
 
     const siteSettings = await getSiteSettings("siteLogo,siteTitle") || {}
-    const siteLogo = siteSettings.siteLogo ?? "#SITE LOGO"
+    const siteLogo = siteSettings.siteLogo ?? "#LOGO"
     const siteTitle = siteSettings.siteTitle ?? "#サイトタイトル"
     const encodedUrl = encodeURIComponent(url);
     const encodedTitle = encodeURIComponent(title + ` | ${siteTitle}(${siteLogo})`);

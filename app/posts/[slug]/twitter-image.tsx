@@ -46,7 +46,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
     const logofontData = await fetchLogoFont();
 
     const siteSettings = await getSiteSettings("siteLogo,siteTitle,siteDesc") || {}
-    const siteLogo = siteSettings.siteLogo ?? "#SITE LOGO"
+    const siteLogo = siteSettings.siteLogo ?? "#LOGO"
     const siteTitle = siteSettings.siteTitle ?? "#サイトタイトル"
     const siteDescription = siteSettings.siteDesc ?? "人間の大学生のポートフォリオ"
 

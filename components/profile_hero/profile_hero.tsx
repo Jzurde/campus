@@ -12,8 +12,8 @@ export default async function ProfileHero() {
 
     const siteSettings = await getSiteSettings("profile") || {}
     const profile = siteSettings.profile ?? {}
-    const english_name = profile.english_name ?? "#ENGLISH NAME";
-    const name = profile.name ?? "#日本語ペンネーム";
+    const english_name = profile.english_name ?? "#NAME";
+    const name = profile.name ?? "#名前";
     const imagename = Array.isArray(profile.toppageHero) ? profile.toppageHero[0] : "person5";
 
     return (
