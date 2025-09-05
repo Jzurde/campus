@@ -6,9 +6,9 @@ import { getAllSlugs, getAllWorksSlug, getCategories, getSiteSettings } from "@/
 import Meta from "@/lib/meta";
 
 export async function generateMetadata() {
-  const settings = await getSiteSettings("siteLogo,siteDesc")
+  const siteSettings = await getSiteSettings("siteDesc") || {}
   return Meta({
-    pageDescription: settings.siteDesc
+    pageDescription: siteSettings.siteDesc ?? "人間の大学生のポートフォリオ"
   })
 }
 
@@ -17,8 +17,9 @@ export default async function Home() {
   const topic_posts = await getAllSlugs(true, 6);
   const topic_categories = await getCategories()
   const works = await getAllWorksSlug(6)
-  const heroSettings = (await getSiteSettings("profile")).profile.toppageHero
-  const showHero = heroSettings[0] != "表示しない"
+  const siteSettings = await getSiteSettings("profile") || {}
+  const heroSettings = siteSettings.profile?.toppageHero ?? [];
+  const showHero = Array.isArray(heroSettings) && heroSettings[0] !== "person5";
 
   for (const post of topic_posts) {
     // if (!post.hasOwnProperty('eyecatch')) {

@@ -10,20 +10,20 @@ const LogoFont = logoFontInstance;
 
 export default async function ProfileHero() {
 
-    const siteSettings = await getSiteSettings("profile")
-    const profile = siteSettings.profile
-    const english_name = profile.english_name;
-    const name = profile.name;
-    const imagename = profile.toppageHero[0]
+    const siteSettings = await getSiteSettings("profile") || {}
+    const profile = siteSettings.profile ?? {}
+    const english_name = profile.english_name ?? "#ENGLISH NAME";
+    const name = profile.name ?? "#日本語ペンネーム";
+    const imagename = Array.isArray(profile.toppageHero) ? profile.toppageHero[0] : "person5";
 
     return (
         <div className={styles.profile_hero}>
-            <Image
+            {(imagename != "表示しない") && <Image
                 className={styles.faceimg}
                 src={`/profile-human_image/${imagename}.png`}
                 alt="profile-image"
                 width={150}
-                height={150} />
+                height={150} />}
             <div className={styles.profile_wrapper}>
                 <h1 className={`${styles.profile_name} ${LogoFont.className}`}>
                     Hi,<br /> I'm <span className={styles.username}>{english_name}</span>

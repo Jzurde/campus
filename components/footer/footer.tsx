@@ -7,8 +7,8 @@ import styles from './footer.module.css'
 
 export default async function Footer() {
 
-    const siteSettings = await getSiteSettings("copyright")
-    const copyright = siteSettings.copyright;
+    const siteSettings = await getSiteSettings("copyright") || {}
+    const copyright = siteSettings.copyright ?? "#著作権表示";
 
     return (
         <footer className={styles.footer}>

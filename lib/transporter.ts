@@ -39,8 +39,9 @@ export function getTransporter() {
 
 export async function getIfContactFormValid() {
     const transporter = getTransporter()
-    const siteSettings = (await getSiteSettings("contactForm")).contactForm
+    const siteSettings = await getSiteSettings("contactForm") || {}
+    const contactformSettings = siteSettings.contactForm ?? {}
     const isContactFormValid = transporter.contactFormValid
 
-    return isContactFormValid && siteSettings.hasOwnProperty('notifyEmail')
+    return isContactFormValid && contactformSettings.hasOwnProperty('notifyEmail')
 }

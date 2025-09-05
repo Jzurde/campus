@@ -9,10 +9,12 @@ export default async function Topics({
     posts: any;
     categories: { name: string; slug: string }[];
 }) {
-    const settings = (await getSiteSettings("topPage")).topPage
-    const section_topics = settings?.hasOwnProperty('section_topics') ? settings.section_topics : 'トピックス'
-    const subsection_interests = settings?.hasOwnProperty('subsection_interests') ? settings.subsection_interests : '最近の興味'
-    const subsection_articles = settings?.hasOwnProperty('subsection_articles') ? settings.subsection_articles : '最近の発言'
+    const siteSettigns = await getSiteSettings("topPage") || {}
+    const toppageSettings = siteSettigns.topPage ?? {}
+
+    const section_topics = toppageSettings.section_topics ?? 'トピックス'
+    const subsection_interests = toppageSettings.subsection_interests ?? '最近の興味'
+    const subsection_articles = toppageSettings.subsection_articles ?? '最近の発言'
     return (
         <section className={styles.container}>
             <h2>{section_topics}</h2>

@@ -18,11 +18,13 @@ export async function generateMetadata() {
 
 export default async function Contact() {
 
-    const settings = (await getSiteSettings("contactPage")).contactPage
-    const description_html = settings.hasOwnProperty('description') ? settings.description : "<p>お問合せフォームは以下です。<br>内容を確認の上、担当者より折り返しご連絡させていただきます。</p>"
-    const name_plaiceholder = settings.hasOwnProperty('name_plaiceholder') ? settings.name_plaiceholder : "お名前"
-    const email_plaiceholder = settings.hasOwnProperty('email_plaiceholder') ? settings.email_plaiceholder : "address@email.com"
-    const message_plaiceholder = settings.hasOwnProperty('message_plaiceholder') ? settings.message_plaiceholder : "お問い合わせ内容"
+    const siteSettings = await getSiteSettings("contactPage") || {}
+    const contactSettings = siteSettings.contactPage || {}
+
+    const description_html = contactSettings.description ?? "<p>お問合せフォームは以下です。<br>内容を確認の上、担当者より折り返しご連絡させていただきます。</p>"
+    const name_plaiceholder = contactSettings.name_plaiceholder ?? "お名前"
+    const email_plaiceholder = contactSettings.email_plaiceholder ?? "address@email.com"
+    const message_plaiceholder = contactSettings.message_plaiceholder ?? "お問い合わせ内容"
 
     if (!(await getIfContactFormValid())) {
         notFound()

@@ -13,11 +13,11 @@ export default async function Meta({
     url?: string;
 }) {
 
-    const siteSettings = await getSiteSettings()
+    const siteSettings = await getSiteSettings() || {}
 
-    const siteTitle = siteSettings.siteTitle
+    const siteTitle = siteSettings.siteTitle ?? "#サイトタイトル"
     const siteUrl = `https://${process.env.SELF_HOSTNAME}`
-    const siteType = siteSettings.siteType[0]
+    const siteType = Array.isArray(siteSettings.siteType) ? siteSettings.siteType[0] : "website";
 
     const metaTitle = (pageTitle) ? `${pageTitle} | ${siteTitle}` : siteTitle
     const metaDesciption = pageDescription ? pageDescription : `${pageTitle}に関する発言`

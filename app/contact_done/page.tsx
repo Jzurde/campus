@@ -21,8 +21,10 @@ export const metadata: Metadata = {
 };
 
 export default async function ContactDone() {
-    const settings = (await getSiteSettings("contactPage")).contactPage
-    const message_html = settings.hasOwnProperty('done_message') ? settings.done_message : "<p>お問合せが完了しました。<br />お問合せ確認メールを送信しておりますのでご確認ください。</p>"
+    const siteSettigns = await getSiteSettings("contactPage") || {}
+    const contactSettings = siteSettigns.contactPage ?? {}
+
+    const message_html = contactSettings.done_message ?? "<p>お問合せが完了しました。<br />お問合せ確認メールを送信しておりますのでご確認ください。</p>"
 
     if (!(await getIfContactFormValid())) {
         notFound()

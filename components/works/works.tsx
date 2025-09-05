@@ -4,9 +4,10 @@ import WorkList from '../work_list.js/work_list'
 import styles from './works.module.css'
 
 export default async function Works({ works }: { works: any }) {
-    const settings = (await getSiteSettings("topPage")).topPage
-    const section_works = settings?.hasOwnProperty('section_works') ? settings.section_works : 'ワークス'
-    const subsection_works = settings?.hasOwnProperty('subsection_works') ? settings.subsection_works : '最近の作品'
+    const siteSettigns = await getSiteSettings("topPage") || {}
+    const toppageSettings = siteSettigns.topPage ?? {}
+    const section_works = toppageSettings.section_works ?? 'ワークス'
+    const subsection_works = toppageSettings.subsection_works ?? '最近の作品'
     return (
         <section className={styles.container}>
             <h2>{section_works}</h2>
