@@ -36,3 +36,17 @@ export default function LinkButton({
 
     )
 }
+
+export function FunctionButton({
+    title, onClick
+}: {
+    title: string;
+    onClick: () => void;
+}) {
+    return (
+        <div className={styles.default} onClick={() => onClick()}>
+            <span>{title}</span>
+            <FontAwesomeIcon icon={faArrowRight} size='xs' />
+        </div>
+    )
+}
