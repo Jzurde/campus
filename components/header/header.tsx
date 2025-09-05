@@ -3,7 +3,6 @@ import styles from './header.module.css';
 import Container from '@/components/container/container'
 import { Bungee } from 'next/font/google';
 import { getSiteSettings } from '@/lib/cms-api';
-import FixedWrapper from '../fixed_wrapper/fixed_wrapper';
 import NotReadyScreen from '../not_ready_screen/not_ready_screen';
 import { Suspense } from 'react';
 
