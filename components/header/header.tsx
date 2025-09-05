@@ -16,9 +16,9 @@ export default async function Header() {
 
     return (
         <>
-            <Suspense>
+            {(Object.keys(siteSettings).length === 0) && <Suspense>
                 <NotReadyScreen />
-            </Suspense>
+            </Suspense>}
             <header className={styles.header}>
                 <Container>
                     <div className={styles.inner}>
