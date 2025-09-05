@@ -12,8 +12,8 @@ export default async function Profile() {
 
     const siteSettings = await getSiteSettings("profile") || {}
     const profileSettigns = siteSettings.profile ?? {}
-    const english_name = profileSettigns.english_name ?? "#ENGLISH NAME";
-    const name = profileSettigns.name ?? "#日本語ペンネーム";
+    const english_name = profileSettigns.english_name ?? "#NAME";
+    const name = profileSettigns.name ?? "#名前";
     const description = profileSettigns.description ?? "#プロフィール説明文";
 
     return (
