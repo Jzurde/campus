@@ -9,8 +9,8 @@ export default async function SNS({
     isAlignRight?: boolean;
 }) {
 
-    const siteSettings = await getSiteSettings("profile")
-    const profile = siteSettings.profile
+    const siteSettings = await getSiteSettings("profile") || {}
+    const profile = siteSettings.profile ?? {}
 
     return (
         <div>

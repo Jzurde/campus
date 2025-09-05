@@ -12,9 +12,9 @@ export default async function ShareMenu({
     fullSize?: boolean;
 }) {
 
-    const siteSettings = await getSiteSettings("siteLogo,siteTitle")
-    const siteLogo = siteSettings.siteLogo
-    const siteTitle = siteSettings.siteTitle
+    const siteSettings = await getSiteSettings("siteLogo,siteTitle") || {}
+    const siteLogo = siteSettings.siteLogo ?? "#SITE LOGO"
+    const siteTitle = siteSettings.siteTitle ?? "#サイトタイトル"
     const encodedUrl = encodeURIComponent(url);
     const encodedTitle = encodeURIComponent(title + ` | ${siteTitle}(${siteLogo})`);
 

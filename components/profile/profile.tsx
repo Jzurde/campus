@@ -10,10 +10,11 @@ const LogoFont = logoFontInstance;
 
 export default async function Profile() {
 
-    const siteSettings = await getSiteSettings("profile")
-    const english_name = siteSettings.profile.english_name;
-    const name = siteSettings.profile.name;
-    const description = siteSettings.profile.description;
+    const siteSettings = await getSiteSettings("profile") || {}
+    const profileSettigns = siteSettings.profile ?? {}
+    const english_name = profileSettigns.english_name ?? "#ENGLISH NAME";
+    const name = profileSettigns.name ?? "#日本語ペンネーム";
+    const description = profileSettigns.description ?? "#プロフィール説明文";
 
     return (
         <div className={styles.container}>

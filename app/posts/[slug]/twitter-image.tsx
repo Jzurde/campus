@@ -1,4 +1,4 @@
-import { getPostBySlug } from "@/lib/cms-api"
+import { getPostBySlug, getSiteSettings } from "@/lib/cms-api"
 import { ImageResponse } from "next/og";
 
 export const contentType = 'image/png'
@@ -45,9 +45,10 @@ export default async function Image({ params }: { params: { slug: string } }) {
     const fontData = await fetchFont();
     const logofontData = await fetchLogoFont();
 
-    const siteLogo = "CAMPUS"
-    const siteTitle = "キャンパス"
-    const siteDescription = "人間の大学生のポートフォリオ"
+    const siteSettings = await getSiteSettings("siteLogo,siteTitle,siteDesc") || {}
+    const siteLogo = siteSettings.siteLogo ?? "#SITE LOGO"
+    const siteTitle = siteSettings.siteTitle ?? "#サイトタイトル"
+    const siteDescription = siteSettings.siteDesc ?? "人間の大学生のポートフォリオ"
 
     if (!fontData || !logofontData) {
         throw new Error("フォントデータの取得に失敗しました");

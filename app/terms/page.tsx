@@ -17,7 +17,8 @@ export async function generateMetadata() {
 
 export default async function Terms() {
 
-    const siteSettings = await getSiteSettings("terms")
+    const siteSettings = await getSiteSettings("terms") || {}
+    const terms = siteSettings.terms ?? "#利用規約・個人情報に関する声明"
 
     return (
         <Container>
@@ -25,7 +26,7 @@ export default async function Terms() {
             <TwoColumn>
                 <TwoColumnMain>
                     <PostBody>
-                        <ConvertBody contentHTML={siteSettings.terms} />
+                        <ConvertBody contentHTML={terms} />
                     </PostBody>
                 </TwoColumnMain>
                 <TwoColumnSidebar>

@@ -7,7 +7,9 @@ export default async function ListHeader({
     title: string;
     subtitle?: string;
 }) {
-    const displaySubtitle = (subtitle) ? subtitle : (await getSiteSettings("siteDesc")).siteDesc
+    const siteSettigns = await getSiteSettings("siteDesc") || {}
+    const siteDesc = siteSettigns.siteDesc ?? "人間の大学生のポートフォリオ"
+    const displaySubtitle = (subtitle) ? subtitle : siteDesc
     return (
         <div className={styles.container}>
             <h1>{title}</h1>
