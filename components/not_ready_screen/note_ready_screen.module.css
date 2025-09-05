@@ -40,14 +40,30 @@
     color: var(--accent);
 }
 
-.message_box {
-    background-color: var(--gray);
-    padding: var(--space-sm);
-    margin-top: var(--space-lg);
-    border-radius: var(--space-sm);
+@media (width>=545px) {
+    .message_box {
+        background-color: var(--gray);
+        padding: var(--space-sm);
+        margin-top: var(--space-lg);
+        border-radius: var(--space-sm);
+    }
+
+    .message_box p {
+        margin-bottom: var(--space-sm);
+        color: var(--lightblack);
+    }
 }
 
-.message_box p {
-    margin-bottom: var(--space-sm);
-    color: var(--lightblack);
+@media (width<=544px) {
+    .pconly {
+        display: none;
+    }
+
+    .message_box p {
+        display: none;
+    }
+
+    .container h3 {
+        margin-bottom: var(--space-md);
+    }
 }
