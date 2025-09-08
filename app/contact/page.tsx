@@ -10,9 +10,11 @@ import PostBody from '@/components/post_body/post_body';
 import { Suspense } from 'react';
 
 export async function generateMetadata() {
+    const siteSettings = await getSiteSettings("siteTitle") || {}
+    const siteTitle = siteSettings.siteTitle ?? "#サイトタイトル"
     return Meta({
         pageTitle: "お問い合わせフォーム",
-        pageDescription: "CAMPUSのお問い合わせフォームです"
+        pageDescription: `${siteTitle}のお問い合わせフォームです`
     })
 }
 

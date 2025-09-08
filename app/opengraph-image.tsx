@@ -1,3 +1,4 @@
+import { getSiteSettings } from "@/lib/cms-api";
 import { ImageResponse } from "next/og";
 
 export const contentType = 'image/png'
@@ -20,7 +21,8 @@ const fetchLogoFont = async () => {
 };
 
 export default async function Image() {
-    const siteLogo = "CAMPUS"
+    const siteSettings = await getSiteSettings("siteLogo") || {}
+    const siteLogo = siteSettings.siteLogo ?? "#LOGO"
     const logofontData = await fetchLogoFont();
     if (!logofontData) {
         throw new Error("フォントデータの取得に失敗しました");
