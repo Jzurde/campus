@@ -1,21 +1,11 @@
-これはCAMPUSのTypeScript+APP Routerバージョンです。
-
+これはCAMPUSのTypeScript+APP Routerバージョンです。  
 CAMPUSは人間の大学生のためのポートフォリオサイトとして、軽量かつ高速な動作を実現しています。
 
 # 🔥始める
-1. パッケージを準備
-```
-npm install
-```
-
-2. 開発環境を起動
-```
-npm run dev
-```
-でサイトを動作させましょう!
+[Vercel](https://vercel.com)で今作ったGitHubレポジトリを選択し、デプロイしましょう!
 
 # 📚環境変数の設定
-ルート直下にある`.env.example`を複製し、名前を`.env`に変更するとともに、記述内容を修正し、情報を入力してください。
+ルート直下にある`.env.example`を複製し、名前を`.env`に変更するか、Vercelのプロジェクト設定のEnvironment Variables(環境変数)を編集し、次の情報を入力してください。
 
 ```
 # microCMSの情報
