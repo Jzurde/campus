@@ -23,7 +23,9 @@ export default async function ProfileHero() {
                 src={`/profile-human_image/${imagename}.png`}
                 alt="profile-image"
                 width={150}
-                height={150} />}
+                height={150}
+                priority
+            />}
             <div className={styles.profile_wrapper}>
                 <h1 className={`${styles.profile_name} ${LogoFont.className}`}>
                     Hi,<br /> I'm <span className={styles.username}>{english_name}</span>
