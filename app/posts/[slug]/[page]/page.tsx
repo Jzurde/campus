@@ -17,6 +17,7 @@ import { prevNextPost } from "@/lib/prevnext_post"
 import { returnSyntaxHighlight } from "@/lib/setSyntaxHighlight"
 import { Metadata } from "next"
 import { cookies, draftMode } from "next/headers"
+import { notFound } from "next/navigation"
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string; page: string }> }): Promise<Metadata> {
     const slug = (await params).slug
@@ -89,7 +90,7 @@ export default async function Post({ params }: {
         ? await getPostBySlug(slug)
         : await getPostByID(slug, { draftKey });
 
-    if (!post) return { notFound: true };
+    if (!post) notFound();
 
     let prevPost
     let nextPost
@@ -105,7 +106,7 @@ export default async function Post({ params }: {
     const itemsPerPage = 1; // 1ページあたりの段落数
     const totalPages = Math.ceil(contentArray.length / itemsPerPage);
 
-    if (page > totalPages) return { notFound: true };
+    if (page > totalPages) notFound();
 
     let content = contentArray.slice(
         (page - 1) * itemsPerPage,

@@ -13,14 +13,20 @@
     }
 
     .big_container {
-        composes: container;
         grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
     }
 
     .small_container {
-        composes: container;
         grid-template-columns: repeat(auto-fill, minmax(377px, 1fr));
     }
+}
+
+.big_container {
+    composes: container;
+}
+
+.small_container {
+    composes: container;
 }
 
 .container {
