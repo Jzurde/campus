@@ -17,23 +17,23 @@
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "@next/third-parties": "^16.0.8",
+    "@next/third-parties": "^16.0.11",
     "cheerio": "^1.1.0",
     "date-fns": "^4.1.0",
     "email-validator": "^2.0.4",
     "highlight.js": "^11.11.1",
     "html-react-parser": "^5.2.5",
     "microcms-js-sdk": "^3.2.0",
-    "next": "^16.0.10",
+    "next": "^16.0.11",
     "nodemailer": "^7.0.3",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "xss": "^1.0.15"
   },
   "devDependencies": {
     "@types/node": "20.19.1",
     "@types/nodemailer": "^6.4.17",
-    "@types/react": "19.1.8",
+    "@types/react": "^19.2.4",
     "@types/react-dom": "^19",
     "typescript": "5.8.3"
   }
